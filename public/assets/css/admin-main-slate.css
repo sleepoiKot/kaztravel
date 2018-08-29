@@ -1,0 +1,62 @@
+.material-icons {
+  font-size: 18px;
+  vertical-align: text-bottom;
+}
+
+.tabs {
+  padding: 15px 15px;
+  background-color: #222;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tab {
+  color: #777;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.tab:hover {
+  background: #333;
+}
+
+.tab + .tab {
+  margin-left: 0.5em;
+}
+
+.tab.active {
+  color: white;
+  background: #333;
+}
+
+.editor > * > * + * {
+  margin-top: 1em;
+}
+
+.menu > * {
+  display: inline-block;
+}
+
+.menu > * + * {
+  margin-left: 15px;
+}
+
+.button {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.button[data-active='true'] {
+  color: black;
+}
+
+.toolbar-menu {
+  position: relative;
+  padding: 1px 18px 17px;
+  margin: 0 -20px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+}
