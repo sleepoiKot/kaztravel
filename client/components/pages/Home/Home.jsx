@@ -4,11 +4,19 @@ import Scroll, { Element, scroller } from "react-scroll";
 import Aux from '/client/hoc/Aux/Aux'
 
 import Nominations from './Nominations/Nominations'
+import Voting from './Voting/Voting'
+import Testimonials from './Testimonials/Testimonials'
 
-const home = () => (
+const home = ({context}) => (
   <Aux>
     <Element name="nominations" />
     <Nominations />
+    {/* Divider */}
+    <div className="c-divider-1 -style-solid -size-large u-position-relative" />
+    {/* Divider End */}
+    <Element name="voting" />
+    <Voting context={context}/>
+    <Testimonials />
   </Aux>
 );
 

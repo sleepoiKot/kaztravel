@@ -1,7 +1,7 @@
 import React from 'react';
 
 const nominations = (props) => (
-  <div className="c-section -space-large">
+  <div id="nominations" className="c-section -space-large">
     <div className="c-container">
       {/* Heading */}
       <h6 className="u-text-sup">KAZAKH TOURISM</h6>

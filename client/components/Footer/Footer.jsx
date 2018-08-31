@@ -14,8 +14,8 @@ const footer = ({contacts}) => (
           <h6 className="c-footer-1-nav-title">Навигация</h6>
           <ul>
             <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Главная</a></li>
-            <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Номинации</a></li>
-            <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Голосование</a></li>
+            <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#nominations">Номинации</a></li>
+            <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#voting">Голосование</a></li>
             <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Открытие</a></li>
           </ul>
         </nav>
