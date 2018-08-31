@@ -21,7 +21,7 @@ Meteor.startup(() => {
     {
       name: "Лучший проект событийного туризма",
       shortDescription: "фестивали конкурсы концерты спектакли",
-      suffix: "social"
+      suffix: "event"
     },
     {
       name: "Лучшая туристская компания",
@@ -71,7 +71,7 @@ Meteor.startup(() => {
     {
       name: "Лучший туристический путеводитель",
       shortDescription: "печатные издания туристических путеводителей",
-      suffix: "magazine"
+      suffix: "guidebook"
     },
     {
       name: "Лучший туристический информационный центр",

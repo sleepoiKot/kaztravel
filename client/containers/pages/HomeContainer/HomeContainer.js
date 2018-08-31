@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
+import { withTracker } from 'meteor/react-meteor-data'
 import moment from 'moment'
 
 import Home from '/client/components/pages/Home/Home'
+
+import { NominationsCollection } from '/api/nominations'
 
 const defaultState = {
   // countdown state
@@ -30,8 +33,14 @@ class HomeContainer extends Component {
   }
 
   render() {
-    return <Home context={this}/>
+    return <Home context={this} nominations={this.props.nominations}/>
   }
 }
 
-export default HomeContainer;
+export default withTracker(() => {
+  Meteor.subscribe('nominations')
+
+  return {
+    nominations: NominationsCollection.find().fetch()
+  }
+})(HomeContainer);

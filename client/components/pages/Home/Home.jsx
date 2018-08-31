@@ -7,10 +7,10 @@ import Nominations from './Nominations/Nominations'
 import Voting from './Voting/Voting'
 import Testimonials from './Testimonials/Testimonials'
 
-const home = ({context}) => (
+const home = ({context, nominations}) => (
   <Aux>
     <Element name="nominations" />
-    <Nominations />
+    <Nominations nominations={nominations}/>
     {/* Divider */}
     <div className="c-divider-1 -style-solid -size-large u-position-relative" />
     {/* Divider End */}
