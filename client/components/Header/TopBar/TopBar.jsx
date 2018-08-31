@@ -1,31 +1,35 @@
 import React from 'react';
+import Scroll, { Element, scroller } from "react-scroll";
 
-import NavigationItems from './NavigationItems/NavigationItems'
-import TopElements from './TopElements/TopElements'
-import ImageSlider from '/client/components/func/ImageSlider'
-
-import Aux from '/client/hoc/Aux/Aux'
-
-const topBar = ({context, configs}) => {
-  let items = (
-    <header className={ context.state.toggleFiltersOnMobile ? "main-header opened" : "main-header"}>
-      <NavigationItems context={context}/>
-      {configs ? <Aux>
-        <TopElements context={context} configs={configs}/>
-        <ImageSlider id="posters" images={configs.posters}/>
-      </Aux> : null}
-    </header>
-  )
-
-  if(!(context.props.location.pathname === '/' || context.props.location.pathname === '/books'))
-    items = (
-      <header className={ context.state.toggleFiltersOnMobile ? "main-header opened" : "main-header"}>
-        <NavigationItems context={context}/>
-        <TopElements context={context} configs={configs}/>
-      </header>
-    )
-
-  return items
-}
+const topBar = () => (
+  <header className="c-header-2 -bg-white -overlap -js-header">
+    <div className="c-container">
+      <div className="c-header-2-row">
+        <nav className="c-header-2-nav">
+          <ul>
+            <li><a href="#section-home" style={{paddingLeft: 0}}>Главная</a></li>
+            <li><a href="#nominations" onClick={() => {
+              scroller.scrollTo('nominations', {
+                duration: 800,
+                delay: 0,
+                smooth: 'easeInOutQuart'
+              })
+            }}>Номинации</a></li>
+            <li><a href="#voting" onClick={() => {
+              scroller.scrollTo('voting', {
+                duration: 800,
+                delay: 0,
+                smooth: 'easeInOutQuart'
+              })
+            }}>Голосование</a></li>
+          </ul>
+        </nav>
+        <div className="c-header-2-toggle">
+          <span className="ion-navicon" />
+        </div>
+      </div>
+    </div>
+  </header>
+)
 
 export default topBar;

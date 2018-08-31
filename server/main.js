@@ -7,7 +7,7 @@ import {
 Meteor.startup(() => {
   // code to run on server at startup
   insertDefaultUsers([{
-    username: 'superadmin ',
+    username: 'superadmin',
     email: 'superadmin@kaztravel.kz',
     password: 'superadmin',
     profile: {
