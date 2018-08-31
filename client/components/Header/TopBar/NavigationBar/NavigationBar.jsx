@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Scroll, { Element, scroller } from "react-scroll";
 
 const navigationBar = () => (
@@ -7,7 +8,7 @@ const navigationBar = () => (
       <div className="c-header-2-row">
         <nav className="c-header-2-nav">
           <ul>
-            <li><a href="#section-home" style={{paddingLeft: 0}}>Главная</a></li>
+            <li><Link to="/" style={{paddingLeft: 0}}>Главная</Link></li>
             <li><a href="#nominations" onClick={() => {
               scroller.scrollTo('nominations', {
                 duration: 800,

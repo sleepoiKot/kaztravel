@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const nominations = ({nominations}) => {
   let event = nominations.find( nom => nom.suffix === 'event')
@@ -42,13 +43,13 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{event ? event.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{event.name}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{event ? event.shortDescription : null}</span>
+                        <span>{event.shortDescription}</span>
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${event.suffix}`} />
                   {/* <a class="c-portfolio-1-zoom -visible-hover" href="assets/img/portfolio-1-1000x1000.jpg" title="Project Name"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a> */}
                 </div>
               </div>
@@ -69,7 +70,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${company.suffix}`} />
                 </div>
               </div>
             </div>
@@ -89,7 +90,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${product.suffix}`} />
                 </div>
               </div>
             </div>
@@ -109,7 +110,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${guide.suffix}`} />
                 </div>
               </div>
             </div>
@@ -129,7 +130,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${hotel.suffix}`} />
                 </div>
               </div>
             </div>
@@ -149,7 +150,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${culture.suffix}`} />
                 </div>
               </div>
             </div>
@@ -169,7 +170,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${youth.suffix}`} />
                 </div>
               </div>
             </div>
@@ -189,7 +190,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${web.suffix}`} />
                 </div>
               </div>
             </div>
@@ -209,7 +210,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${journalist.suffix}`} />
                 </div>
               </div>
             </div>
@@ -229,7 +230,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${media.suffix}`} />
                 </div>
               </div>
             </div>
@@ -249,7 +250,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${guidebook.suffix}`} />
                 </div>
               </div>
             </div>
@@ -269,7 +270,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${info.suffix}`} />
                 </div>
               </div>
             </div>
@@ -289,7 +290,7 @@ const nominations = ({nominations}) => {
                       </div>
                     </div>
                   </div>
-                  <a className="c-portfolio-1-link" href="nomination.html" />
+                  <Link className="c-portfolio-1-link" to={`/nomination/${route.suffix}`} />
                 </div>
               </div>
             </div>

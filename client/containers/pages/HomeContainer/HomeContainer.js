@@ -18,9 +18,7 @@ class HomeContainer extends Component {
   state = defaultState
 
   componentDidMount() {
-    setTimeout(() => {$('#preloader').fadeOut('slow')}, 500)
-
-    setInterval(() => {
+    this.interval = setInterval(() => {
       let countdown = moment('2018/09/20 23:59:59', 'YYYY/MM/DD HH:mm:ss').diff(moment())
 
       this.setState({
@@ -30,6 +28,10 @@ class HomeContainer extends Component {
         seconds: moment.duration(countdown).seconds()
       })
     }, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
 
   render() {

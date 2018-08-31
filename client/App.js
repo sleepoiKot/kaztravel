@@ -19,6 +19,7 @@ import BookDescriptionContainer from './containers/pages/BooksContainer/BookDesc
 import LoginContainer from './containers/pages/LoginContainer/LoginContainer'
 import CartContainer from './containers/pages/CartContainer/CartContainer'
 import ContactsContainer from './containers/pages/ContactsContainer/ContactsContainer'
+import NominationContainer from './containers/pages/NominationContainer/NominationContainer'
 
 import { cookie } from './libs/coreLib'
 import { locStrings } from '/imports/localization/localization'
@@ -31,6 +32,10 @@ class App extends Component {
     document.getElementById("default-theme-styles").disabled = false;
   }
 
+  componentDidMount() {
+    setTimeout(() => {$('#preloader').fadeOut('slow')}, 500)
+  }
+
   render() {
     let routes = (
       <Aux classNameAux="site-wrapper">
@@ -38,8 +43,8 @@ class App extends Component {
         <Public path="/" component={ TopBarContainer } {...this.props} />
         <Switch>
           <Public exact path="/" component={ HomeContainer } {...this.props} />
+          <Public exact path="/nomination/:_id" component={ NominationContainer } {...this.props} />
           {/* <Public exact path="/books" component={ BooksContainer } {...this.props} />
-          <Public exact path="/books/:_id" component={ BookDescriptionContainer } {...this.props} />
           <Public exact path="/login" component={ LoginContainer } {...this.props} />
           <Public exact path="/forgotPassword" component={ ForgotPasswordContainer } {...this.props} />
           <Public exact path="/cart" component={ CartContainer } {...this.props} />
