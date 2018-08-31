@@ -24,6 +24,10 @@ if (Meteor.isServer) {
         'data.shortDescription': {
           type: String,
           label: "Nomination short description"
+        },
+        'data.suffix': {
+          type: String,
+          label: "Nomination suffix"
         }
       }).validate({ data })
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import AddNominationModal from './AddNominationModal/AddNominationModal'
+// import AddNominationModal from './AddNominationModal/AddNominationModal'
 import EditNominationModal from './EditNominationModal/EditNominationModal'
 
 import RemoveModal from '/client/components/func/RemoveModal'
@@ -51,11 +51,11 @@ const adminNominations = ({context}) => {
           <div className="card-header">
             <div className="d-flex align-items-center">
               <h3><strong>Номинации</strong></h3>
-              <button
+              {/* <button
                 type="button"
                 data-toggle="modal"
                 data-target="#add-nomination-modal"
-                className="btn-md btn btn-outline-warning waves-effect">Добавить <i className="fa fa-plus"></i></button>
+                className="btn-md btn btn-outline-warning waves-effect">Добавить <i className="fa fa-plus"></i></button> */}
             </div>
           </div>
           <div className="card-body">
@@ -81,10 +81,10 @@ const adminNominations = ({context}) => {
           </div>
         </div>
       </div>
-      <AddNominationModal
+      {/* <AddNominationModal
         id="add-nomination-modal"
         context={context}
-      />
+      /> */}
       <EditNominationModal
         id="edit-nomination-modal"
         context={context}
