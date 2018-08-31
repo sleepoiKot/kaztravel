@@ -21,9 +21,6 @@ const app = (
 );
 
 Meteor.startup(function() {
-  Accounts.config({
-    loginExpirationInDays: 14
-  })
   // MDB core JavaScript
   $('body').append('<script type="text/javascript" src="/assets/js/mdb.min.js"></script>');
 

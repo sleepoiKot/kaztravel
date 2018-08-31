@@ -38,9 +38,8 @@ class Admin extends Component {
     if(this.props.match.path === '/admin') {
       document.getElementById("default-main-slate").disabled = true;
       document.getElementById("default-main-styles").disabled = true;
-      document.getElementById("default-dun-correct-main-styles").disabled = true;
-      document.getElementById("default-kk-styles").disabled = true;
-      document.getElementById("default-dun-styles").disabled = true;
+      document.getElementById("default-theme-styles").disabled = true;
+      // document.getElementById("default-dun-styles").disabled = true;
     }
   }
 

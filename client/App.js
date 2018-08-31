@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 import ScrollToTop from 'react-scroll-up'
+import Scroll, { Element, scroller } from "react-scroll";
+import moment from 'moment'
 
 import Aux from './hoc/Aux/Aux'
 import Public from './components/func/Public'
@@ -23,14 +25,37 @@ import ContactsContainer from './containers/pages/ContactsContainer/ContactsCont
 import { cookie } from './libs/coreLib'
 import { locStrings } from '/imports/localization/localization'
 
+const defaultState = {
+  // countdown state
+  days: '',
+  hours: '',
+  minutes: '',
+  seconds: ''
+}
+
 class App extends Component {
+  state = defaultState
+
   componentWillMount() {
     document.getElementById("default-main-slate").disabled = true;
     document.getElementById("admin-main-styles").disabled = true;
     document.getElementById("default-main-styles").disabled = false;
-    document.getElementById("default-dun-correct-main-styles").disabled = false;
-    document.getElementById("default-kk-styles").disabled = false;
-    document.getElementById("default-dun-styles").disabled = false;
+    document.getElementById("default-theme-styles").disabled = false;
+  }
+
+  componentDidMount() {
+    setTimeout(() => {$('#preloader').fadeOut('slow')}, 500)
+
+    setInterval(() => {
+      let countdown = moment('2018/09/20 23:59:59', 'YYYY/MM/DD HH:mm:ss').diff(moment())
+
+      this.setState({
+        days: moment.duration(countdown).days(),
+        hours: moment.duration(countdown).hours(),
+        minutes: moment.duration(countdown).minutes(),
+        seconds: moment.duration(countdown).seconds()
+      })
+    }, 1000)
   }
 
   render() {
@@ -70,14 +95,581 @@ class App extends Component {
 
     return (
       <Aux>
-        {!this.props.loggingIn ? routes : null}
+        <Preloader/>
+
+        <div className="site-wrapper">
+
+          {/* Header */}
+          <header className="c-header-2 -bg-white -overlap -js-header">
+            <div className="c-container">
+              <div className="c-header-2-row">
+                <nav className="c-header-2-nav">
+                  <ul>
+                    <li><a href="#section-home" style={{paddingLeft: 0}}>Главная</a></li>
+                    <li><a href="#nominations" onClick={() => {
+                      scroller.scrollTo('nominations', {
+                        duration: 800,
+                        delay: 0,
+                        smooth: 'easeInOutQuart'
+                      })
+                    }}>Номинации</a></li>
+                    <li><a href="#voting" onClick={() => {
+                      scroller.scrollTo('voting', {
+                        duration: 800,
+                        delay: 0,
+                        smooth: 'easeInOutQuart'
+                      })
+                    }}>Голосование</a></li>
+                  </ul>
+                </nav>
+                <div className="c-header-2-toggle">
+                  <span className="ion-navicon" />
+                </div>
+              </div>
+            </div>
+          </header>
+          {/* Header End */}
+
+          {/* Section Hero */}
+          <div className="c-section -space-large" id="section-home">
+            <div className="c-section-photo"/>
+            <div className="c-container">
+              <div className="row">
+                <div className="col-sm-6">
+                  {/* Heading */}
+                  <h1 className="u-text-hero u-text-pacifico">National Tourism Awards</h1>
+                  <h2 className="u-text-title">Национальная премия в области туризма</h2>
+                  <p className="u-text-lead">отраслевая награда, присуждаемая по итогам открытого конкурса за достижения в области развития индустрии туризма, включая все смежные отрасли туризма</p>
+                  {/* Heading End */}
+                  {/* Space */}
+                  <div className="u-space" />
+                  {/* Space End */}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Section Hero End */}
+
+          {/* Section Portfolio */}
+          <Element name="nominations" />
+          <div className="c-section -space-large">
+            <div className="c-container">
+              {/* Heading */}
+              <h6 className="u-text-sup">KAZAKH TOURISM</h6>
+              <h1 className="u-text-hero">Номинации</h1>
+              <p className="u-text-lead">География проведения конкурса – Республика Казахстан</p>
+              {/* Heading End */}
+              {/* Space */}
+              <div className="u-space-100 u-space-120@xl" />
+              {/* Space End */}
+              {/* Portfolio */}
+              <div className="c-portfolio-1 -js-popup -js-isotope" data-cursor-portfolio-layout="masonry">
+                {/* Portfolio Inner */}
+                <div className="c-portfolio-1-inner row -gutter-none" style={{position: 'relative', height: 1380}}>
+                  {/* Portfolio Size */}
+                  <div className="c-portfolio-1-size col-md-6 col-lg-4 col-xl-3" />
+                  {/* Portfolio Size End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 illustration graphic" style={{position: 'absolute', left: '0%', top: 0}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-1-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший проект событийного туризма</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>фестивали</span>
+                              <span>конкурсы</span>
+                              <span>концерты</span>
+                              <span>спектакли</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                        {/* <a class="c-portfolio-1-zoom -visible-hover" href="assets/img/portfolio-1-1000x1000.jpg" title="Project Name"><i class="fa fa-arrows-alt" aria-hidden="true"></i></a> */}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 graphic art" style={{position: 'absolute', left: '25%', top: 0}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-13-500x1000.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучшая туристская компания</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>внутренний и въездной туризм</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 art logo" style={{position: 'absolute', left: '50%', top: 0}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-4-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший турпродукт</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>внутренний и въездной туризм</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 logo corporate" style={{position: 'absolute', left: '75%', top: 0}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-5-500x1000.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший гид-экскурсовод</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              {/* <span>Logo Design</span>
+    												<span>Corporate Identity</span> */}
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 corporate illustration" style={{position: 'absolute', left: '0%', top: 276}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-11-500x1000.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший объект гостиничной индустрии</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              {/* <span>Corporate Identity</span>
+    												<span>Illustration</span> */}
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 illustration graphic" style={{position: 'absolute', left: '50%', top: 276}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-7-500x1000.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший культурно-познавательный маршрут</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>маршрут, включающий выбор определенной тематической направленности</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 graphic art" style={{position: 'absolute', left: '25%', top: 552}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-3-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший проект по детско-юношескому туризму</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              {/* <span>Graphic Design</span>
+    												<span>Art Direction</span> */}
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 art logo" style={{position: 'absolute', left: '75%', top: 552}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-6-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший интернет-сервис для туристов</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>веб-ресурсы</span>
+                              <span>мобильные приложения</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 logo corporate" style={{position: 'absolute', left: '0%', top: 828}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-14-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший журналист по освещению туристской тематики</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              {/* <span>Logo Design</span>
+    												<span>Corporate Identity</span> */}
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 corporate illustration" style={{position: 'absolute', left: '25%', top: 828}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-8-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший медиа-проект по туризму</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              {/* <span>Corporate Identity</span>
+    												<span>Illustration</span> */}
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 illustration graphic" style={{position: 'absolute', left: '50%', top: 828}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-9-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший туристический путеводитель</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>печатные издания туристических путеводителей</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 illustration graphic" style={{position: 'absolute', left: '75%', top: 828}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-10-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучший туристический информационный центр</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>оценивается деятельность ТИЦ</span>
+                              <span>разработка и продвижение турмаршрутов</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                  {/* Portfolio Item */}
+                  <div className="c-portfolio-1-item col-md-6 col-lg-4 col-xl-3 illustration graphic" style={{position: 'absolute', left: '0%', top: 1104}}>
+                    <div className="c-portfolio-1-item-inner">
+                      <div className="c-portfolio-1-media">
+                        <div className="c-portfolio-1-photo">
+                          <img src="assets/img/portfolio-10-500x500.jpg" alt="Project Name" />
+                        </div>
+                        <div className="c-portfolio-1-caption -style-1 -visible">
+                          <div className="c-portfolio-1-caption-inner">
+                            <h3 className="c-portfolio-1-caption-title">Лучшая идея маршрута</h3>
+                            <div className="c-portfolio-1-caption-tags">
+                              <span>туристский маршрут, который ранее не был реализован</span>
+                            </div>
+                          </div>
+                        </div>
+                        <a className="c-portfolio-1-link" href="nomination.html" />
+                      </div>
+                    </div>
+                  </div>
+                  {/* Portfolio Item End */}
+                </div>
+                {/* Portfolio Inner End */}
+              </div>
+              {/* Portfolio End */}
+            </div>
+          </div>
+          {/* Section Portfolio End */}
+
+          {/* Divider */}
+          <div className="c-divider-1 -style-solid -size-large u-position-relative" />
+          {/* Divider End */}
+
+          <Element name="voting" />
+          {/* Section Testimonials */}
+          <div className="c-section -space-large -bg-blue-light">
+            <div className="c-container">
+              {/* Heading */}
+              <h6 className="u-text-sup u-text-center">КОНКУРСНЫЙ ОТБОР</h6>
+              <p className="u-text-lead u-text-center">Заявки соискателей на участие принимаются в период <br /> с 20 сентября 2018 года по 31 октября 2018 года</p>
+              {/* Heading End */}
+              <h2 className="u-text-title u-text-center">до начала конкурсного отбора осталось:</h2>
+              {/* Space */}
+              <div className="u-space u-space-40@sm" />
+              {/* Space End */}
+              {/* Countdown */}
+              <div className="c-countdown-1 -size-large -js-countdown" data-cursor-countdown="2018/09/20 23:59:59">
+                <div className="c-countdown-1-inner row">
+                  <div className="c-countdown-1-item col-sm-6 col-md-3">
+                    <div className="c-countdown-1-value value-days">{this.state.days}</div>
+                    <div className="c-countdown-1-text">ДНЕЙ</div>
+                  </div>
+                  <div className="c-countdown-1-item col-sm-6 col-md-3">
+                    <div className="c-countdown-1-value value-hours">{this.state.hours}</div>
+                    <div className="c-countdown-1-text">ЧАСОВ</div>
+                  </div>
+                  <div className="c-countdown-1-item col-sm-6 col-md-3">
+                    <div className="c-countdown-1-value value-minutes">{this.state.minutes}</div>
+                    <div className="c-countdown-1-text">МИНУТ</div>
+                  </div>
+                  <div className="c-countdown-1-item col-sm-6 col-md-3">
+                    <div className="c-countdown-1-value value-seconds">{this.state.seconds}</div>
+                    <div className="c-countdown-1-text">СЕКУНД</div>
+                  </div>
+                </div>
+              </div>
+              {/* Countdown End */}
+            </div>
+          </div>
+          {/* Section Testimonials End */}
+
+          {/* Section Testimonials */}
+          <div className="c-section -bg-green section-testimonials-1">
+            <div className="c-container -size-full">
+              <div className="row -gutter-none">
+                <div className="col-lg-6 section-testimonials-1-photo"/>
+                <div className="col-lg-6 section-testimonials-1-content">
+                  {/* Heading */}
+                  <h6 className="u-text-sup u-color-white">О НАЦИОНАЛЬНОЙ ПРЕМИИ</h6>
+                  <h2 className="u-text-title u-color-white">цели и задачи премии</h2>
+                  {/* Heading End */}
+                  {/* Testimonials */}
+                  <div className="c-testimonials-2 -align-left">
+                    {/*Carousel Wrapper*/}
+                    <div id="carousel-example-1z" className="carousel slide carousel-fade" data-ride="carousel">
+                      {/*Indicators*/}
+                      <ol className="carousel-indicators">
+                        <li data-target="#carousel-example-1z" data-slide-to={0} className="active" />
+                        <li data-target="#carousel-example-1z" data-slide-to={1} />
+                        <li data-target="#carousel-example-1z" data-slide-to={2} />
+                        <li data-target="#carousel-example-1z" data-slide-to={3} />
+                        <li data-target="#carousel-example-1z" data-slide-to={4} />
+                        <li data-target="#carousel-example-1z" data-slide-to={5} />
+                        <li data-target="#carousel-example-1z" data-slide-to={6} />
+                        <li data-target="#carousel-example-1z" data-slide-to={7} />
+                      </ol>
+                      {/*/.Indicators*/}
+                      {/*Items*/}
+                      <div className="carousel-inner" role="listbox">
+
+                        {/*First item*/}
+                        <div className="carousel-item active">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Организация и проведение открытого конкурсного отбора на соискание Национальной премии в области туризма, как инструмента по выявлению наиболее успешных проектов/турпродуктов/туроператоров в области туризма, их продвижению, и по формированию заинтересованного отношения к индустрии туризма широкой общественности</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/First item end*/}
+
+                        {/*Second item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Создание информационной и коммуникационной площадок на базе Премии для обмена опытом и организации взаимодействия всех заинтересованных лиц и организаций в сфере развития туризма на территории регионов и страны, и как инструмента для  развития и продвижения территорий</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Second item end*/}
+
+                        {/*Third item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Улучшение качества сервиса сферы услуг в туризме</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Third item end*/}
+
+                        {/*Fourth item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Популяризация и развитие внутреннего туризма, улучшение его инвестиционной привлекательности</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Fourth item end*/}
+
+                        {/*Fifth item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Организация сотрудничества всех заинтересованных лиц и организаций в сфере развития туризма на территории страны</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Fifth item end*/}
+
+                        {/*Sixth item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Создание единой информационной базы наиболее интересных проектов и турпродуктов в сфере туризма</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Sixth item end*/}
+
+                        {/*Seventh item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Привлечение к участию в конкурсе как можно большего числа участников сферы туризма из как можно большего количества территорий страны</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Seventh item end*/}
+
+                        {/*Eighth item*/}
+                        <div className="carousel-item">
+                          <div className="c-testimonials-2-item">
+          									<div className="c-testimonials-2-message">
+          										<p>Содействие внедрению механизма частно-государственного партнерства в сферу туризма</p><br/>
+          									</div>
+          								</div>
+                        </div>
+                        {/*/Eighth item end*/}
+
+                      </div>
+                      {/*/.Slides*/}
+                    </div>
+                    {/*/.Carousel Wrapper*/}
+                  </div>
+                  {/* Testimonials End */}
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* Section Testimonials End */}
+
+          {/* Footer */}
+          <footer className="c-footer-1 -bg-white">
+            <div className="c-container">
+              <div className="c-footer-1-top">
+                <div className="c-footer-1-about">
+                  {/* <p><img src="assets/img/logo-dark.png" width="140" alt="Cursor"></p> */}
+                  <h1 className="u-text-hero u-text-pacifico">National Tourism Awards</h1>
+                  <p>Открытый конкурс на соискание Национальной премии в области туризма,<br /> как инструмента по выявлению наиболее успешных проектов в области туризма</p>
+                </div>
+                <nav className="c-footer-1-nav">
+                  <h6 className="c-footer-1-nav-title">Навигация</h6>
+                  <ul>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Главная</a></li>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Номинации</a></li>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Голосование</a></li>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Открытие</a></li>
+                  </ul>
+                </nav>
+                <nav className="c-footer-1-nav">
+                  <h6 className="c-footer-1-nav-title">Мероприятия</h6>
+                  <ul>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Открытие</a></li>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Закрытие</a></li>
+                    <li className="c-footer-1-nav-item"><a className="c-footer-1-nav-link" href="#">Вручение</a></li>
+                  </ul>
+                </nav>
+              </div>
+              <div className="c-footer-1-bottom">
+                <div className="c-footer-1-copyright">
+                  <p>© 2018 Kazakh Tourism — All Rights Reserved.</p>
+                </div>
+                <div className="c-footer-1-social">
+                  <div className="c-social-1 -color-dark-simple -hover-mixed-default -corner-circle -size-small">
+                    <ul className="c-social-1-inner">
+                      <li className="c-social-1-item"><a className="c-social-1-link -icon-facebook" href="#" target="_blank"><i className="fa fa-facebook" aria-hidden="true" /></a></li>
+                      <li className="c-social-1-item"><a className="c-social-1-link -icon-twitter" href="#" target="_blank"><i className="fa fa-twitter" aria-hidden="true" /></a></li>
+                      <li className="c-social-1-item"><a className="c-social-1-link -icon-linkedin" href="#" target="_blank"><i className="fa fa-linkedin" aria-hidden="true" /></a></li>
+                      <li className="c-social-1-item"><a className="c-social-1-link -icon-google-plus" href="#" target="_blank"><i className="fa fa-google-plus" aria-hidden="true" /></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+          {/* Footer End */}
+        </div>
+
+        {/* Back Top */}
         <div className="scrollToTop">
           <ScrollToTop duration={1000} showUnder={160}>
             <a className="btn-floating btn-large orange">
-              <i className="fa fa-arrow-up"></i>
+              <i className="fa fa-arrow-up" style={{fontSize: '2.625rem'}}></i>
             </a>
           </ScrollToTop>
         </div>
+        {/* Back Top End */}
+
+
+        {/* {!this.props.loggingIn ? routes : null} */}
       </Aux>
     )
   }

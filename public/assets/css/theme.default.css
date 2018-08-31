@@ -857,6 +857,7 @@ h6 {
   opacity: 0.7;
 }
 .section-testimonials-1-photo {
+  background-image: url("/assets/img/bg-19.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
