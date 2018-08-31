@@ -16,6 +16,7 @@ import AdminBooksContainer from './containers/adminPages/AdminBooksContainer/Adm
 import AdminNewBookContainer from './containers/adminPages/AdminBooksContainer/AdminNewBookContainer/AdminNewBookContainer'
 import AdminUsersContainer from './containers/adminPages/AdminUsersContainer/AdminUsersContainer'
 import AdminConfigurationsContainer from './containers/adminPages/AdminConfigurationsContainer/AdminConfigurationsContainer'
+import AdminNominationsContainer from './containers/adminPages/AdminNominationsContainer/AdminNominationsContainer'
 
 // Dictionaries
 import AdminAgesContainer from './containers/adminPages/AdminDictionaries/AdminAgesContainer/AdminAgesContainer'
@@ -39,7 +40,6 @@ class Admin extends Component {
       document.getElementById("default-main-slate").disabled = true;
       document.getElementById("default-main-styles").disabled = true;
       document.getElementById("default-theme-styles").disabled = true;
-      // document.getElementById("default-dun-styles").disabled = true;
     }
   }
 
@@ -56,11 +56,11 @@ class Admin extends Component {
           <Authenticated path="/admin" component={ AdminBarContainer } {...this.props} />
           <Switch>
             <Authenticated exact path="/admin" component={ AdminDashboardContainer } {...this.props} />
-            <Authenticated exact path="/admin/books" component={ AdminBooksContainer } {...this.props} />
-            <Authenticated exact path="/admin/books/newBook" component={ AdminNewBookContainer } { ...this.props } />
-            <Authenticated exact path="/admin/books/newBook/:_id" component={ AdminNewBookContainer } { ...this.props } />
-            <Authenticated exact path="/admin/users" component={ AdminUsersContainer } {...this.props} />
-            <Route path="/admin/dictionaries">
+            <Authenticated exact path="/admin/nominations" component={ AdminNominationsContainer } {...this.props} />
+            {/* <Authenticated exact path="/admin/books/newBook" component={ AdminNewBookContainer } { ...this.props } /> */}
+            {/* <Authenticated exact path="/admin/books/newBook/:_id" component={ AdminNewBookContainer } { ...this.props } /> */}
+            {/* <Authenticated exact path="/admin/users" component={ AdminUsersContainer } {...this.props} /> */}
+            {/* <Route path="/admin/dictionaries">
               <Aux>
                 <Authenticated exact path="/admin/dictionaries/ages" component={ AdminAgesContainer } {...this.props} />
                 <Authenticated exact path="/admin/dictionaries/subjects" component={ AdminSubjectsContainer } {...this.props} />
@@ -70,8 +70,8 @@ class Admin extends Component {
                 <Authenticated exact path="/admin/dictionaries/discounts" component={ AdminDiscountsContainer } {...this.props} />
                 <Authenticated exact path="/admin/dictionaries/whereToBuy" component={ AdminWhereToBuyContainer } {...this.props} />
               </Aux>
-            </Route>
-            <Authenticated exact path="/admin/configs" component={ AdminConfigurationsContainer } {...this.props} />
+            </Route> */}
+            {/* <Authenticated exact path="/admin/configs" component={ AdminConfigurationsContainer } {...this.props} /> */}
             <Redirect to="/admin" />
           </Switch>
         </Aux>

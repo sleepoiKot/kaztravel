@@ -43,8 +43,8 @@ class App extends Component {
           <Public exact path="/login" component={ LoginContainer } {...this.props} />
           <Public exact path="/forgotPassword" component={ ForgotPasswordContainer } {...this.props} />
           <Public exact path="/cart" component={ CartContainer } {...this.props} />
-          <Public exact path="/contacts" component={ ContactsContainer } {...this.props} />
-          <Redirect to="/" /> */}
+          <Public exact path="/contacts" component={ ContactsContainer } {...this.props} /> */}
+          <Redirect to="/" />
         </Switch>
         <Public path="/" component={ FooterContainer } {...this.props} />
       </Aux>

@@ -29,11 +29,11 @@ const adminNavBar = ({context}) => (
             </NavLink>
           </li>
           <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">
-            <NavLink to="/admin/books" activeClassName="nav-item active" className="nav-item">
-              <label className="nav-link waves-effect">Коллекция</label>
+            <NavLink to="/admin/nominations" activeClassName="nav-item active" className="nav-item">
+              <label className="nav-link waves-effect">Номинации</label>
             </NavLink>
           </li>
-          <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">
+          {/* <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">
             <NavLink to="/admin/users" activeClassName="nav-item active" className="nav-item">
               <label className="nav-link waves-effect">Пользователи</label>
             </NavLink>
@@ -74,7 +74,7 @@ const adminNavBar = ({context}) => (
             <NavLink to="/admin/configs" activeClassName="nav-item active" className="nav-item">
               <label className="nav-link waves-effect">Конфигурация</label>
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         {/* Right */}
         <ul className="navbar-nav">

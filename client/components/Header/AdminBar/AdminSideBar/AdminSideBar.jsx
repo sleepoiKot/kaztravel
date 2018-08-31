@@ -14,11 +14,11 @@ const adminSideBar = (props) => (
         className="list-group-item list-group-item-action waves-effect">
         <i className="fa fa-pie-chart mr-3" />Анкеты</NavLink>
       <NavLink
-        to="/admin/books"
+        to="/admin/nominations"
         activeClassName="list-group-item active waves-effect"
         className="list-group-item list-group-item-action waves-effect">
-        <i className="fa fa-book mr-3" />Коллекция книг</NavLink>
-      <NavLink
+        <i className="fa fa-book mr-3" />Номинации</NavLink>
+      {/* <NavLink
         to="/admin/users"
         activeClassName="list-group-item active waves-effect"
         className="list-group-item list-group-item-action waves-effect">
@@ -93,7 +93,7 @@ const adminSideBar = (props) => (
           to="/admin/configs"
           activeClassName="list-group-item active waves-effect"
           className="list-group-item list-group-item-action waves-effect">
-          <i className="fa fa-cogs mr-3" />Конфигурация</NavLink>
+          <i className="fa fa-cogs mr-3" />Конфигурация</NavLink> */}
     </div>
   </div>
 );
