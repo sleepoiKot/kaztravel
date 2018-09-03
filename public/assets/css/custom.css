@@ -405,3 +405,10 @@ strong {font-weight:bold;}
     border: 1px solid #000;
     float:none;
 }
+
+.fill-form-button {
+  width: 48rem;
+  height: 10rem;
+  color: #24b47e !important;
+  border-color: #24b47e !important;
+}
