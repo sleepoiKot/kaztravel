@@ -12,7 +12,7 @@ class Authenticated extends Component {
   }
 
   render() {
-    const { loggingIn, authenticated, component, user, locStrings, ...rest } = this.props
+    const { loggingIn, authenticated, component, user, locStrings, lang, ...rest } = this.props
     return (
       <Route
         { ...rest }
@@ -23,7 +23,7 @@ class Authenticated extends Component {
           if(!authenticated)
             return toastr.error("You are not logged in")
 
-          return (React.createElement(component, {...props, user, loggingIn, authenticated, locStrings}))
+          return (React.createElement(component, {...props, lang, user, loggingIn, authenticated, locStrings}))
         } }
       />
     )

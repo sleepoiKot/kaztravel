@@ -12,14 +12,14 @@ class Public extends Component {
   }
 
   render() {
-    const {loggingIn, authenticated, component, locStrings, ...rest} = this.props
+    const {loggingIn, authenticated, component, locStrings, lang, ...rest} = this.props
 
     return (
       <Route
         { ...rest }
         render={ props => {
           if(loggingIn) return <div />
-          return React.createElement(component, { ...props, locStrings, loggingIn, authenticated, })
+          return React.createElement(component, { ...props, locStrings, loggingIn, authenticated, lang})
         } }
       />
     )

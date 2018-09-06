@@ -10,7 +10,7 @@ import Testimonials from './Testimonials/Testimonials'
 const home = ({context, nominations}) => (
   <Aux>
     <Element name="nominations" />
-    <Nominations nominations={nominations}/>
+    <Nominations context={context} nominations={nominations}/>
     {/* Divider */}
     <div className="c-divider-1 -style-solid -size-large u-position-relative" />
     {/* Divider End */}

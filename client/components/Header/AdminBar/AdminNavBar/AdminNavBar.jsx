@@ -25,7 +25,7 @@ const adminNavBar = ({context}) => (
         <ul className="navbar-nav mr-auto">
           <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">
             <NavLink exact to="/admin" activeClassName="nav-item active" className="nav-item">
-              <label className="nav-link waves-effect">Главная</label>
+              <label className="nav-link waves-effect">Анкеты</label>
             </NavLink>
           </li>
           <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">

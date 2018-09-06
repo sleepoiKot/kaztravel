@@ -39,6 +39,7 @@ export const locStrings = {
     chooseFile: 'Choose file',
     chooseFiles: 'Choose files',
     send: 'Send',
+    save: 'Save',
 
     // Validation Labels
     emailValidation: 'Invalid e-mail format',
@@ -83,6 +84,7 @@ export const locStrings = {
     chooseFile: 'Выбрать файл',
     chooseFiles: 'Выбрать файлы',
     send: 'Отправить',
+    save: 'Сохранить',
 
     // Validation Labels
     emailValidation: 'Неверный формат e-mail',
@@ -127,6 +129,7 @@ export const locStrings = {
     chooseFile: 'Файлды таңдаңыз',
     chooseFiles: 'Файлдарды таңдаңыз',
     send: 'Жіберу',
+    save: 'Сақтау',
 
     // Validation Labels
     emailValidation: 'Электрондық пошта пішімі жарамсыз',

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Aux from '/client/hoc/Aux/Aux'
+
 export default FileUpload = ({
   uploaderChangeHandler,
   context,
@@ -30,12 +32,18 @@ export default FileUpload = ({
     return (
       <div className="file-path-wrapper">
         {file.progress === 100 ?
-          <input
-            value={file.name}
-            className="file-path validate"
-            disabled
-            type="text"
-            style={{height: 37, fontSize: 14}}/>
+          <Aux classNameAux="c-form-img-caption">
+            <input
+              value={file.name}
+              className="file-path validate"
+              disabled
+              type="text"
+              style={{height: 37, fontSize: 14}}/>
+              <a
+                onClick={() => context.setState({[stateName]: ''})}
+                style={{color: "#000"}}
+                className="file-path validate"><i className="fa fa-remove" /></a>
+          </Aux>
             :
           <span className="file-path validate">
             <i className={iconClassName} /> &nbsp; &nbsp; { file.progress }%
@@ -63,12 +71,23 @@ export default FileUpload = ({
       return (
         <div key={file._id} className="file-path-wrapper">
           {file.progress === 100 ?
-            <input
-              value={file.name}
-              className="file-path validate"
-              disabled
-              type="text"
-              style={{height: 37, fontSize: 14}}/>
+            <Aux classNameAux="c-form-img-caption">
+              <input
+                value={file.name}
+                className="file-path validate"
+                disabled
+                type="text"
+                style={{height: 37, fontSize: 14}}/>
+              <a
+                onClick={() => {
+                  let arrayOfImages = [...context.state[stateName]],
+                      newArrayOfImages = arrayOfImages.filter( img => img._id !== file._id)
+
+                  context.setState({[stateName]: newArrayOfImages})
+                }}
+                style={{color: "#000"}}
+                className="file-path validate"><i className="fa fa-remove" /></a>
+            </Aux>
               :
             <span className="file-path validate">
               <i className={iconClassName} /> &nbsp; &nbsp; { file.progress }%

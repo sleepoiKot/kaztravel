@@ -380,3 +380,8 @@ strong {font-weight:bold;}
   color: #24b47e !important;
   border-color: #24b47e !important;
 }
+
+.c-form-img-caption {
+  display: flex;
+  align-items: baseline;
+}

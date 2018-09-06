@@ -1,12 +1,12 @@
 import { FilesCollection } from 'meteor/ostrio:files'
 import { LogsCollection } from '/api/logs'
 
-export const Images = new FilesCollection({
+export const DocsCollection = new FilesCollection({
   storagePath: '/docs',
   downloadRoute: '/docs',
   permissions: 0774,
 	parentDirPermissions: 0774,
-  collectionName: 'Images',
+  collectionName: 'DocsCollection',
   allowClientCode: false, // Disallow remove files from Client
   onBeforeUpload(file) {
     return true;
@@ -32,14 +32,14 @@ if (Meteor.isClient) {
 
 if(Meteor.isServer) {
   Meteor.publish('docs.all', function () {
-    return Images.find().cursor
+    return DocsCollection.find().cursor
   })
 
   Meteor.methods({
     'get.link'(file) {
-      let fileRef = Images.collection.findOne({_id: file._id});
+      let fileRef = DocsCollection.collection.findOne({_id: file._id});
       if(fileRef){
-        return Images.link(fileRef);
+        return DocsCollection.link(fileRef);
       }
     }
   })

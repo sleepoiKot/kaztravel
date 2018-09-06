@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const nominations = ({nominations}) => {
+const nominations = ({context, nominations}) => {
   let event = nominations.find( nom => nom.suffix === 'event')
   let company = nominations.find( nom => nom.suffix === 'company')
   let product = nominations.find( nom => nom.suffix === 'product')
@@ -43,7 +43,7 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{event.name}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{event.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
                         <span>{event.shortDescription}</span>
                       </div>
@@ -64,9 +64,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{company ? company.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{company.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{company ? company.shortDescription : null}</span>
+                        <span>{company.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -84,9 +84,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{product ? product.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{product.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{product ? product.shortDescription : null}</span>
+                        <span>{product.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -104,9 +104,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{guide ? guide.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{guide.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{guide ? guide.shortDescription : null}</span>
+                        <span>{guide.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -124,9 +124,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{hotel ? hotel.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{hotel.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{hotel ? hotel.shortDescription : null}</span>
+                        <span>{hotel.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -144,9 +144,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{culture ? culture.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{culture.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{culture ? culture.shortDescription : null}</span>
+                        <span>{culture.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -164,9 +164,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{youth ? youth.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{youth.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{youth ? youth.shortDescription : null}</span>
+                        <span>{youth.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -184,9 +184,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{web ? web.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{web.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{web ? web.shortDescription : null}</span>
+                        <span>{web.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -204,9 +204,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{journalist ? journalist.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{journalist.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{journalist ? journalist.shortDescription : null}</span>
+                        <span>{journalist.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -224,9 +224,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{media ? media.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{media.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{media ? media.shortDescription : null}</span>
+                        <span>{media.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -244,9 +244,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{guidebook ? guidebook.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{guidebook.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{guidebook ? guidebook.shortDescription : null}</span>
+                        <span>{guidebook.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -264,9 +264,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{info ? info.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{info.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{info ? info.shortDescription : null}</span>
+                        <span>{info.shortDescription}</span>
                       </div>
                     </div>
                   </div>
@@ -284,9 +284,9 @@ const nominations = ({nominations}) => {
                   </div>
                   <div className="c-portfolio-1-caption -style-1 -visible">
                     <div className="c-portfolio-1-caption-inner">
-                      <h3 className="c-portfolio-1-caption-title">{route ? route.name : null}</h3>
+                      <h3 className="c-portfolio-1-caption-title">{route.name[context.props.lang]}</h3>
                       <div className="c-portfolio-1-caption-tags">
-                        <span>{route ? route.shortDescription : null}</span>
+                        <span>{route.shortDescription}</span>
                       </div>
                     </div>
                   </div>

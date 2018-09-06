@@ -36,6 +36,31 @@ const form = ({context, submitForm}) => {
                         <div className="row">
                           <div className="col-sm-6">
                             <div className="c-form-group">
+                              <label className="c-form-label">Номинация</label>
+                              <Select
+                                styles={{
+                                  option: (base, state) => ({
+                                    ...base,
+                                    backgroundColor: state.isSelected ? "#24b47e" : state.isFocused ? "#e8f7f1" : null,
+                                    cursor: 'pointer'
+                                  }),
+                                  control: (base, state) => {
+                                    return ({
+                                      ...base,
+                                      // none of react-selects styles are passed to <View />
+                                      boxShadow: "none",
+                                      borderColor: state.isFocused ? "#24b47e !important" : base.borderColor
+                                    })
+                                  }
+                                }}
+                                value={context.state.formNomination}
+                                onChange={value => context.setState({ formNomination: value })}
+                                placeholder={context.props.locStrings.selectPlaceholder}
+                                options={context.nominationOptions}/>
+                            </div>
+                          </div>
+                          <div className="col-sm-6">
+                            <div className="c-form-group">
                               <Element name="formEmail" />
                               <label className="c-form-label">{context.props.locStrings.formEmail}</label>
                               <Input
@@ -53,6 +78,9 @@ const form = ({context, submitForm}) => {
                                 {context.state.errors.some(err => err === 'formEmail') ? <small style={{color: 'red'}}><i>{context.props.locStrings.emailValidation}</i></small> : null}
                             </div>
                           </div>
+                        </div>
+                        <hr />
+                        <div className="row">
                           <div className="col-sm-6">
                             <div className="c-form-group">
                               <label className="c-form-label">{context.props.locStrings.formLastName}</label>
@@ -65,9 +93,6 @@ const form = ({context, submitForm}) => {
                                 className="c-form-input"/>
                             </div>
                           </div>
-                        </div>
-                        <hr />
-                        <div className="row">
                           <div className="col-sm-6">
                             <div className="c-form-group">
                               <label className="c-form-label">{context.props.locStrings.formFirstName}</label>
@@ -100,6 +125,11 @@ const form = ({context, submitForm}) => {
                               <label className="c-form-label">{context.props.locStrings.formOrganization}</label>
                               <Select
                                 styles={{
+                                  option: (base, state) => ({
+                                    ...base,
+                                    backgroundColor: state.isSelected ? "#24b47e" : state.isFocused ? "#e8f7f1" : null,
+                                    cursor: 'pointer'
+                                  }),
                                   control: (base, state) => {
                                     return ({
                                       ...base,
@@ -113,6 +143,18 @@ const form = ({context, submitForm}) => {
                                 onChange={value => context.setState({ formOrganization: value })}
                                 placeholder={context.props.locStrings.selectPlaceholder}
                                 options={context.organizationOptions}/>
+                            </div>
+                          </div>
+                          <div className="col-sm-6">
+                            <div className="c-form-group">
+                              <label className="c-form-label">Наименование организации</label>
+                              <Input
+                                type="text"
+                                context={context}
+                                id="formOrganizationName"
+                                stateName="formOrganizationName"
+                                placeholder="Benefit Technologies"
+                                className="c-form-input"/>
                             </div>
                           </div>
                           <div className="col-sm-6">
@@ -230,7 +272,7 @@ const form = ({context, submitForm}) => {
                               <button
                                 type="submit"
                                 className="c-button-1 -color-green-default -hover-green-outline -size-small">
-                                {context.props.locStrings.send}
+                                {context.props.locStrings.save}
                               </button>
                             </div>
                           </div>

@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import gm from 'gm';
 
 import FileUpload from '/client/components/func/FileUpload'
-import { Images } from '/api/docs'
+import { DocsCollection } from '/api/docs'
 
-const SIZE_LIMIT = 25000000
+const SIZE_LIMIT = 5000000
 const PHEXT = ['jpg', 'jpeg', 'png']
 
 export default class FileUploadContainer extends Component {
@@ -51,8 +51,8 @@ export default class FileUploadContainer extends Component {
     const { context, stateName, multi, main, ext } = this.props
     const { user } = context.props
 
-    if(files.length > 8 || multi && context.state[stateName].length > 7) {
-      toastr.warning('Допускается не более 8 изображений', 'Количество загруженных файлов превышено')
+    if(files.length > 10 || multi && context.state[stateName].length > 9) {
+      toastr.warning('Допускается не более 10 изображений', 'Количество загруженных файлов превышено')
       return
     }
 
@@ -63,7 +63,7 @@ export default class FileUploadContainer extends Component {
       const type = theFile.type.split('/')[1]
 
       if(theFile.size > SIZE_LIMIT) {
-        toastr.error("Загружаемый файл не должен превышать 25 мб")
+        toastr.error("Загружаемый файл не должен превышать 5 мб")
         continue
       }
 
@@ -74,7 +74,7 @@ export default class FileUploadContainer extends Component {
 
       const uploadingFile = {}
 
-      const upload = Images.insert({
+      const upload = DocsCollection.insert({
         file: theFile
       }, false)
 

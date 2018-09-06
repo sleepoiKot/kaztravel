@@ -16,91 +16,110 @@ if (Meteor.isServer) {
       return FormsCollection.findOne(_id)
     },
     'form.insert'(_id, data) {
-      console.log(data)
-      new SimpleSchema({
-        data: {
-          type: Object,
-          label: "Form data"
-        },
-        'data.email': {
-          type: String,
-          regEx: SimpleSchema.RegEx.Email,
-          label: "Form email"
-        },
-        'data.lastName': {
-          type: String,
-          label: "Form last name",
-          optional: true
-        },
-        'data.firstName': {
-          type: String,
-          label: "Form first name",
-          optional: true
-        },
-        'data.middleName': {
-          type: String,
-          label: "Form middle name",
-          optional: true
-        },
-        'data.organization': {
-          type: Object,
-          label: "Form organization",
-          optional: true,
-          min: 2,
-          max: 2
-        },
-        'data.organization.value': {
-          type: String,
-          label: "The value of the organization in the form"
-        },
-        'data.organization.label': {
-          type: String,
-          label: "The label of the organization in the form"
-        },
-        'data.organizationAddress': {
-          type: String,
-          label: "Form organization address",
-          optional: true
-        },
-        'data.organizationFunctions': {
-          type: String,
-          label: "Form organization functions",
-          optional: true
-        },
-        'data.organizationPortfolio': {
-          type: Object,
-          label: "Form organization portfolio",
-          optional: true,
-          blackbox: true
-        },
-        'data.phone': {
-          type: String,
-          label: "Form phone",
-          optional: true
-        },
-        'data.web': {
-          type: String,
-          label: "Form web",
-          optional: true
-        },
-        'data.project': {
-          type: Object,
-          label: "Form project",
-          optional: true,
-          blackbox: true
-        },
-        'data.photos': {
-          type: [Object],
-          label: "Form photos",
-          optional: true,
-          blackbox: true
-        },
-        'data.youtubeLink': {
-          type: String,
-          label: "Form YouTube link",
-          optional: true
-        }
-      }).validate({ data })
+      // new SimpleSchema({
+      //   data: {
+      //     type: Object,
+      //     label: "Form data"
+      //   },
+      //   'data.nomination': {
+      //     type: Object,
+      //     label: "Form nomination",
+      //     optional: true,
+      //     min: 2,
+      //     max: 2
+      //   },
+      //   'data.nomination.value': {
+      //     type: String,
+      //     label: 'Form nomination value'
+      //   },
+      //   'data.nomination.label': {
+      //     type: String,
+      //     label: 'Form nomination label'
+      //   },
+      //   'data.email': {
+      //     type: String,
+      //     regEx: SimpleSchema.RegEx.Email,
+      //     label: "Form email"
+      //   },
+      //   'data.lastName': {
+      //     type: String,
+      //     label: "Form last name",
+      //     optional: true
+      //   },
+      //   'data.firstName': {
+      //     type: String,
+      //     label: "Form first name",
+      //     optional: true
+      //   },
+      //   'data.middleName': {
+      //     type: String,
+      //     label: "Form middle name",
+      //     optional: true
+      //   },
+      //   'data.organization': {
+      //     type: Object,
+      //     label: "Form organization",
+      //     optional: true,
+      //     min: 2,
+      //     max: 2
+      //   },
+      //   'data.organization.value': {
+      //     type: String,
+      //     label: "The value of the organization in the form"
+      //   },
+      //   'data.organization.label': {
+      //     type: String,
+      //     label: "The label of the organization in the form"
+      //   },
+      //   'data.organizationName': {
+      //     type: String,
+      //     label: "Form organization name",
+      //     optional: true
+      //   },
+      //   'data.organizationAddress': {
+      //     type: String,
+      //     label: "Form organization address",
+      //     optional: true
+      //   },
+      //   'data.organizationFunctions': {
+      //     type: String,
+      //     label: "Form organization functions",
+      //     optional: true
+      //   },
+      //   'data.organizationPortfolio': {
+      //     type: Object,
+      //     label: "Form organization portfolio",
+      //     optional: true,
+      //     blackbox: true
+      //   },
+      //   'data.phone': {
+      //     type: String,
+      //     label: "Form phone",
+      //     optional: true
+      //   },
+      //   'data.web': {
+      //     type: String,
+      //     label: "Form web",
+      //     optional: true
+      //   },
+      //   'data.project': {
+      //     type: Object,
+      //     label: "Form project",
+      //     optional: true,
+      //     blackbox: true
+      //   },
+      //   'data.photos': {
+      //     type: [Object],
+      //     label: "Form photos",
+      //     optional: true,
+      //     blackbox: true
+      //   },
+      //   'data.youtubeLink': {
+      //     type: String,
+      //     label: "Form YouTube link",
+      //     optional: true
+      //   }
+      // }).validate({ data })
 
       const log = {
         username: Meteor.user().username,
@@ -119,10 +138,17 @@ if (Meteor.isServer) {
         createdAt: new Date()
       }
 
-      console.log(finaldata)
-      return
+      let formId = FormsCollection.upsert({ _id }, { $set: finaldata }, { upsert: true })
 
-      FormsCollection.upsert({ _id }, { $set: finaldata }, { upsert: true })
+      if(formId.insertedId) Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.formId': formId.insertedId}})
+    },
+    'get.form'() {
+
+      let formId = Meteor.user().profile.formId
+
+      if(!formId) return false
+
+      return FormsCollection.findOne(formId)
     }
   });
 }

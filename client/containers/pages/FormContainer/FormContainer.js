@@ -1,14 +1,19 @@
 import React, { Component } from 'react'
 import Scroll, { Element, scroller } from "react-scroll";
+import { withTracker } from 'meteor/react-meteor-data'
 
 import Form from '/client/components/pages/Form/Form'
 
+import { NominationsCollection } from '/api/nominations'
+
 const defaultState = {
+  formNomination: '',
   formEmail: '',
   formLastName: '',
   formFirstName: '',
   formMiddleName: '',
   formOrganization: '',
+  formOrganizationName: '',
   formOrganizationAddress: '',
   formOrganizationFunctions: '',
   organizationPortfolio: '',
@@ -28,15 +33,47 @@ const emailValidationRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+
 class FormContainer extends Component {
   state = defaultState
 
+  componentWillMount() {
+    if(Meteor.userId()){
+      Meteor.call('get.form', (err, res) => {
+        if(err){
+          toastr.error(err.reason, 'Упс... что-то пошло не так')
+        } else if(!res){
+          this.setState({formEmail: Meteor.user().emails[0].address})
+        } else {
+          this.setState({
+            formNomination: res.nomination,
+            formEmail: res.email,
+            formLastName: res.lastName,
+            formFirstName: res.firstName,
+            formMiddleName: res.middleName,
+            formOrganization: res.organization,
+            formOrganizationName: res.organizationName,
+            formOrganizationAddress: res.organizationAddress,
+            formOrganizationFunctions: res.organizationFunctions,
+            organizationPortfolio: res.organizationPortfolio,
+            formPhone: res.phone,
+            formWeb: res.web,
+            project: res.project,
+            photos: res.photos,
+            formYoutubeLink: res.youtubeLink
+          })
+        }
+      })
+    }
+  }
+
   submitForm = (e) => {
     e.preventDefault()
 
     const {
+      formNomination,
       formEmail,
       formLastName,
       formFirstName,
       formMiddleName,
       formOrganization,
+      formOrganizationName,
       formOrganizationAddress,
       formOrganizationFunctions,
       organizationPortfolio,
@@ -70,11 +107,13 @@ class FormContainer extends Component {
     }
 
     const data = {
+      nomination: formNomination,
       email: formEmail,
       lastName: formLastName,
       firstName: formFirstName,
       middleName: formMiddleName,
       organization: formOrganization,
+      organizationName: formOrganizationName,
       organizationAddress: formOrganizationAddress,
       organizationFunctions: formOrganizationFunctions,
       organizationPortfolio: organizationPortfolio,
@@ -85,7 +124,9 @@ class FormContainer extends Component {
       youtubeLink: formYoutubeLink
     }
 
-    Meteor.call('form.insert', data, (err, res) => {
+    let formId = Meteor.user().profile.formId
+
+    Meteor.call('form.insert', formId, data, (err, res) => {
       if(err){
         toastr.error(err.reason, "Упс, что-то пошло не так")
       } else {
@@ -115,6 +156,13 @@ class FormContainer extends Component {
   }
 
   render() {
+    this.nominationOptions = this.props.nominations.map( nom => {
+      return {
+        value: nom._id,
+        label: nom.name[this.props.lang]
+      }
+    })
+
     this.organizationOptions = [
       {value: '0', label: 'Физическое лицо'},
       {value: '1', label: 'ИП'},
@@ -125,4 +173,10 @@ class FormContainer extends Component {
   }
 }
 
-export default FormContainer;
+export default withTracker(() => {
+  Meteor.subscribe('nominations')
+
+  return {
+    nominations: NominationsCollection.find().fetch()
+  }
+})(FormContainer);
