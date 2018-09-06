@@ -41,7 +41,13 @@ class AdminLoginContainer extends Component {
         login, password
     , (err) => {
         if(err) {
-          toastr.error(err.reason, 'Ошибка авторизации')
+          if(err.reason === 'User not found') {
+            toastr.error('Пользователь не найден')
+          } else if(err.reason === 'Incorrect password') {
+            toastr.error('Неверный пароль')
+          } else {
+            toastr.error(err.reason, 'Упс... что-то пошло не так')
+          }
         } else {
           let theUser = Meteor.user()
           let userGreetings = `Добро пожаловать!`

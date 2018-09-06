@@ -1,5 +1,15 @@
 export const locStrings = {
   en: {
+    // Admin Navigation Items
+    navForms: 'Forms',
+    navNominations: 'Nominations',
+
+    // Admin Forms
+    adminForms: 'Forms',
+    adminFormTableNomination: 'Nomination',
+    adminFormTableOrganizationName: 'Organization name',
+    adminFormTableEmail: 'Email',
+
     // Online Application
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Online application',
@@ -40,11 +50,25 @@ export const locStrings = {
     chooseFiles: 'Choose files',
     send: 'Send',
     save: 'Save',
+    adminTableActions: 'Actions',
 
     // Validation Labels
     emailValidation: 'Invalid e-mail format',
+
+    // Icon titles
+    titleWatchForm: 'watch form',
   },
   ru: {
+    // Admin Navigation Items
+    navForms: 'Анкеты',
+    navNominations: 'Номинации',
+
+    // Admin Forms
+    adminForms: 'Анкеты',
+    adminFormTableNomination: 'Номинация',
+    adminFormTableOrganizationName: 'Наименование организации',
+    adminFormTableEmail: 'Email',
+
     // Online Application
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Онлайн заявка',
@@ -85,11 +109,25 @@ export const locStrings = {
     chooseFiles: 'Выбрать файлы',
     send: 'Отправить',
     save: 'Сохранить',
+    adminTableActions: 'Действия',
 
     // Validation Labels
     emailValidation: 'Неверный формат e-mail',
+
+    // Icon titles
+    titleWatchForm: 'посмотреть анкету',
   },
   kz: {
+    // Admin Navigation Items
+    navForms: 'Сауалнамалар',
+    navNominations: 'Номинациялар',
+
+    // Admin Forms
+    adminForms: 'Сауалнамалар',
+    adminFormTableNomination: 'Номинация',
+    adminFormTableOrganizationName: 'Ұйымның атауы',
+    adminFormTableEmail: 'Email',
+
     // Online Application
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Онлайн өтінім',
@@ -130,8 +168,12 @@ export const locStrings = {
     chooseFiles: 'Файлдарды таңдаңыз',
     send: 'Жіберу',
     save: 'Сақтау',
+    adminTableActions: 'Әрекеттер',
 
     // Validation Labels
     emailValidation: 'Электрондық пошта пішімі жарамсыз',
+
+    // Icon titles
+    titleWatchForm: 'бейінді қарау',
   }
 }

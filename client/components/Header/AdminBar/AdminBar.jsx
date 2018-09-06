@@ -6,7 +6,7 @@ import AdminSideBar from './AdminSideBar/AdminSideBar'
 const adminBar = ({context}) => (
   <header>
     <AdminNavBar context={context}/>
-    <AdminSideBar />
+    <AdminSideBar context={context}/>
   </header>
 );
 

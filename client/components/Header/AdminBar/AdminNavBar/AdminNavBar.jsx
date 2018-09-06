@@ -25,12 +25,12 @@ const adminNavBar = ({context}) => (
         <ul className="navbar-nav mr-auto">
           <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">
             <NavLink exact to="/admin" activeClassName="nav-item active" className="nav-item">
-              <label className="nav-link waves-effect">Анкеты</label>
+              <label className="nav-link waves-effect">{context.props.locStrings.navForms}</label>
             </NavLink>
           </li>
           <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">
             <NavLink to="/admin/nominations" activeClassName="nav-item active" className="nav-item">
-              <label className="nav-link waves-effect">Номинации</label>
+              <label className="nav-link waves-effect">{context.props.locStrings.navNominations}</label>
             </NavLink>
           </li>
           {/* <li data-toggle={context.state.collapse ? "collapse" : null} data-target="#navbarSupportedContent">

@@ -11,7 +11,7 @@ import AdminBarContainer from './containers/Header/AdminBarContainer/AdminBarCon
 
 // Admin pages
 import AdminLoginContainer from './containers/adminPages/AdminLoginContainer/AdminLoginContainer'
-import AdminDashboardContainer from './containers/adminPages/AdminDashboardContainer/AdminDashboardContainer'
+import AdminFormsContainer from './containers/adminPages/AdminFormsContainer/AdminFormsContainer'
 import AdminBooksContainer from './containers/adminPages/AdminBooksContainer/AdminBooksContainer'
 import AdminNewBookContainer from './containers/adminPages/AdminBooksContainer/AdminNewBookContainer/AdminNewBookContainer'
 import AdminUsersContainer from './containers/adminPages/AdminUsersContainer/AdminUsersContainer'
@@ -55,7 +55,7 @@ class Admin extends Component {
         <Aux>
           <Authenticated path="/admin" component={ AdminBarContainer } {...this.props} />
           <Switch>
-            <Authenticated exact path="/admin" component={ AdminDashboardContainer } {...this.props} />
+            <Authenticated exact path="/admin" component={ AdminFormsContainer } {...this.props} />
             <Authenticated exact path="/admin/nominations" component={ AdminNominationsContainer } {...this.props} />
             {/* <Authenticated exact path="/admin/books/newBook" component={ AdminNewBookContainer } { ...this.props } /> */}
             {/* <Authenticated exact path="/admin/books/newBook/:_id" component={ AdminNewBookContainer } { ...this.props } /> */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 
-const adminSideBar = (props) => (
+const adminSideBar = ({context}) => (
   <div className="sidebar-fixed position-fixed" style={{overflowY: 'scroll', top: 0, bottom: 0}}>
     <a className="logo-wrapper waves-effect">
       <img src="/img/admin/baiterek.png" className="img-fluid" />
@@ -12,12 +12,12 @@ const adminSideBar = (props) => (
         to="/admin"
         activeClassName="list-group-item active waves-effect"
         className="list-group-item list-group-item-action waves-effect">
-        <i className="fa fa-pie-chart mr-3" />Анкеты</NavLink>
+        <i className="fa fa-pie-chart mr-3" />{context.props.locStrings.navForms}</NavLink>
       <NavLink
         to="/admin/nominations"
         activeClassName="list-group-item active waves-effect"
         className="list-group-item list-group-item-action waves-effect">
-        <i className="fa fa-book mr-3" />Номинации</NavLink>
+        <i className="fa fa-book mr-3" />{context.props.locStrings.navNominations}</NavLink>
       {/* <NavLink
         to="/admin/users"
         activeClassName="list-group-item active waves-effect"
