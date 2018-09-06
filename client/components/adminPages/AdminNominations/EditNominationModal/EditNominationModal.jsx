@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from 'react-select'
 
 import Input from '/client/components/func/Input'
 
@@ -59,12 +58,12 @@ const editNominationModal = ({context, ...rest}) => {
               <div className="modal-footer">
                   <button
                     type="button"
-                    className="btn-md btn btn-blue-grey"
+                    className="btn-md btn btn-outline-primary waves-effect"
                     ref={ closeButton => context.closeEditNominationModal = closeButton }
                     data-dismiss="modal">Закрыть</button>
                   <button
                     type="submit"
-                    className="btn-md btn btn-deep-orange">Сохранить</button>
+                    className="btn-md btn btn-primary">Сохранить</button>
               </div>
             </form>
           </div>

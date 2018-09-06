@@ -1,5 +1,4 @@
 import React from 'react';
-import Select from 'react-select'
 
 import Input from '/client/components/func/Input'
 

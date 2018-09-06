@@ -9,6 +9,8 @@ Meteor.users.deny({
 });
 
 if (Meteor.isServer) {
+  import { getRandomCode } from '/server/lib/globalVariables'
+
   Meteor.publish('users', function(){
       return UsersCollection.find({
         deleted: {$ne: true}
@@ -37,15 +39,9 @@ if (Meteor.isServer) {
           label: "User password",
           min: 6
         },
-        'data.profile.name': {
+        'data.profile.phoneNumber': {
           type: String,
-          label: "User name"
-        },
-        'data.profile.customer': {
-          type: Boolean
-        },
-        'data.profile.getDispatch': {
-          type: Boolean
+          label: "User phone number"
         }
       }).validate({data})
 
@@ -58,70 +54,44 @@ if (Meteor.isServer) {
       }
       LogsCollection.insert(log)
 
+      const confirmCode = getRandomCode()
+
       const finalData = {
         username: data.email,
         email: data.email,
         password: data.password,
         profile: {
-          name: data.profile.name,
-          customer: data.profile.customer,
-          dispatch: data.profile.getDispatch
+          phoneNumber: data.profile.phoneNumber,
+          confirmCode
         }
       }
 
       Accounts.createUser(finalData)
     },
-    'user.book.favorite.add'(_id) {
+    'verify.sms'(code) {
       new SimpleSchema({
-        _id: {
+        code: {
           type: String,
-          label: "Book Id"
+          label: "SMS code",
+          min: 4,
+          max: 4
         }
-      }).validate({_id})
+      }).validate({code})
 
       const log = {
-        username: Meteor.user().username,
-        user: Meteor.user().profile.name,
         createdAt: Date.now(),
-        service: 'user.book.favorite.add',
+        service: 'verify.sms',
         payload: {
-          _id
-        }
+          code
+        },
       }
       LogsCollection.insert(log)
 
-      Meteor.users.update({_id: Meteor.userId()}, {
-        $push: {
-          'profile.favorite': _id
-        }
-      })
-    },
-    'user.book.favorite.remove'(_id) {
-      new SimpleSchema({
-        _id: {
-          type: String,
-          label: "Book Id"
-        }
-      }).validate({_id})
+      let userSMSCode = Meteor.user().profile.confirmCode
+      if(userSMSCode === parseInt(code))
+        return Meteor.users.update(Meteor.userId(), {$unset: {'profile.confirmCode': ''}})
 
-      const log = {
-        username: Meteor.user().username,
-        user: Meteor.user().profile.name,
-        createdAt: Date.now(),
-        service: 'user.book.favorite.remove',
-        payload: {
-          _id
-        }
-      }
-      LogsCollection.insert(log)
-
-      const newFavoriteBooks = Meteor.user().profile.favorite.filter(el => el !== _id)
-
-      Meteor.users.update({_id: Meteor.userId()}, {
-        $set: {
-          'profile.favorite': newFavoriteBooks
-        }
-      })
+      return false
     }
   });
 }

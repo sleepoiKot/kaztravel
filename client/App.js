@@ -16,10 +16,12 @@ import HomeContainer from './containers/pages/HomeContainer/HomeContainer'
 import ForgotPasswordContainer from './containers/pages/ForgotPasswordContainer/ForgotPasswordContainer'
 import BooksContainer from './containers/pages/BooksContainer/BooksContainer'
 import BookDescriptionContainer from './containers/pages/BooksContainer/BookDescriptionContainer/BookDescriptionContainer'
-import LoginContainer from './containers/pages/LoginContainer/LoginContainer'
 import CartContainer from './containers/pages/CartContainer/CartContainer'
 import ContactsContainer from './containers/pages/ContactsContainer/ContactsContainer'
 import NominationContainer from './containers/pages/NominationContainer/NominationContainer'
+import FormContainer from './containers/pages/FormContainer/FormContainer'
+import SignupContainer from './containers/pages/SignupContainer/SignupContainer'
+import LoginContainer from './containers/pages/LoginContainer/LoginContainer'
 
 import { cookie } from './libs/coreLib'
 import { locStrings } from '/imports/localization/localization'
@@ -44,33 +46,28 @@ class App extends Component {
         <Switch>
           <Public exact path="/" component={ HomeContainer } {...this.props} />
           <Public exact path="/nomination/:_id" component={ NominationContainer } {...this.props} />
-          {/* <Public exact path="/books" component={ BooksContainer } {...this.props} />
+          <Public exact path="/signup" component={ SignupContainer } {...this.props} />
           <Public exact path="/login" component={ LoginContainer } {...this.props} />
-          <Public exact path="/forgotPassword" component={ ForgotPasswordContainer } {...this.props} />
-          <Public exact path="/cart" component={ CartContainer } {...this.props} />
-          <Public exact path="/contacts" component={ ContactsContainer } {...this.props} /> */}
           <Redirect to="/" />
         </Switch>
         <Public path="/" component={ FooterContainer } {...this.props} />
       </Aux>
     )
 
-    // if(this.props.authenticated) {
-    //   routes = (
-    //     <Aux>
-    //       <Authenticated path="/" component={ TopBarContainer } {...this.props} />
-    //       <Switch>
-    //         <Authenticated exact path="/" component={ HomeContainer } {...this.props} />
-    //         <Authenticated exact path="/books" component={ BooksContainer } {...this.props} />
-    //         <Authenticated exact path="/books/:_id" component={ BookDescriptionContainer } {...this.props} />
-    //         <Authenticated exact path="/cart" component={ CartContainer } {...this.props} />
-    //         <Authenticated exact path="/contacts" component={ ContactsContainer } {...this.props} />
-    //         <Redirect to="/" />
-    //       </Switch>
-    //       <Authenticated path="/" component={ FooterContainer } {...this.props} />
-    //     </Aux>
-    //   )
-    // }
+    if(this.props.authenticated) {
+      routes = (
+        <Aux classNameAux="site-wrapper">
+          <Authenticated path="/" component={ TopBarContainer } {...this.props} />
+          <Switch>
+            <Authenticated exact path="/" component={ HomeContainer } {...this.props} />
+            <Authenticated exact path="/nomination/:_id" component={ NominationContainer } {...this.props} />
+            <Authenticated exact path="/form" component={ FormContainer } {...this.props} />
+            <Redirect to="/" />
+          </Switch>
+          <Authenticated path="/" component={ FooterContainer } {...this.props} />
+        </Aux>
+      )
+    }
 
     return (
       <Aux>
@@ -78,9 +75,7 @@ class App extends Component {
         {/* Back Top */}
         <div className="scrollToTop">
           <ScrollToTop duration={1000} showUnder={160}>
-            <a className="btn-floating btn-large orange">
-              <i className="fa fa-arrow-up" style={{fontSize: '2.625rem'}}></i>
-            </a>
+            <i className="fa fa-angle-up" style={{fontSize: '2rem', marginRight: '2rem'}}></i>
           </ScrollToTop>
         </div>
         {/* Back Top End */}
@@ -103,7 +98,7 @@ export default withTracker(() => {
   return {
     locStrings: locStrings[lang],
     loggingIn,
-    authenticated: !loggingIn && !!userId,
+    authenticated: !!userId,
     user
   }
 })(App);

@@ -42,21 +42,13 @@ export default class FileUploadContainer extends Component {
             if(link) link.href = res
           }
         })
-        Meteor.call('get.thumbnail', file, (err, res) => {
-          if(err) {
-            toastr.error(err.reason)
-          } else {
-            const img = document.querySelector(`#img-${file._id}`)
-            if(img) img.src = res
-          }
-        })
       }
     })
   }
 
   uploaderChangeHandler(e) {
     const files = e.currentTarget.files
-    const { context, stateName, multi, main } = this.props
+    const { context, stateName, multi, main, ext } = this.props
     const { user } = context.props
 
     if(files.length > 8 || multi && context.state[stateName].length > 7) {
@@ -70,14 +62,13 @@ export default class FileUploadContainer extends Component {
       const mime = theFile.type.split('/')[0]
       const type = theFile.type.split('/')[1]
 
-      let isPic = PHEXT.some( ext => ext === type)
-      if(!isPic || mime !== 'image'){
-        toastr.error("Загружаемый файл не является изображением")
+      if(theFile.size > SIZE_LIMIT) {
+        toastr.error("Загружаемый файл не должен превышать 25 мб")
         continue
       }
 
-      if(theFile.size > SIZE_LIMIT) {
-        toastr.error("Загружаемый файл не должен превышать 25 мб")
+      if(ext === 'pdf' && type !== 'pdf'){
+        toastr.error("Загружаемый файл не является файлом формата \"PDF\"")
         continue
       }
 
@@ -124,34 +115,6 @@ export default class FileUploadContainer extends Component {
             else {
               const link = document.querySelector(`#link-${fileObj._id}`)
               if(link) link.href = res
-            }
-          })
-          Meteor.call('get.thumbnail', fileObj, (err, res) => {
-            if(err) {
-              toastr.error(err.reason)
-            } else {
-              const img = document.querySelector(`#img-${fileObj._id}`)
-              if(img) img.src = res
-
-              let uploadingFileLink = {}
-              if(multi) {
-                const linkedArrayOfImages = [...context.state[stateName]]
-                const pos = linkedArrayOfImages.map(img => img._id).indexOf(fileObj._id)
-
-                uploadingFileLink = {
-                  ...linkedArrayOfImages[pos],
-                  link: res
-                }
-
-                linkedArrayOfImages[pos] = uploadingFileLink
-                context.setState({ [stateName]: linkedArrayOfImages })
-              } else {
-                uploadingFileLink = {
-                  ...context.state[stateName],
-                  link: res
-                }
-                context.setState({ [stateName]: uploadingFileLink })
-              }
             }
           })
         }

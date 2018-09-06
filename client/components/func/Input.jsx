@@ -10,11 +10,11 @@ export default Input = (props) => {
       mask={ props['data-mask'] }
       onChange={ e => {
         let value = e.currentTarget.value
-        if(validation && !context.state[stateName])
+        if(!context.state[stateName])
           value = e.currentTarget.value.trim()
 
         context.setState({ [stateName]: value})
-      }}
+      } }
       value={ context.state[stateName] }
       { ...rest }
     />
@@ -23,7 +23,7 @@ export default Input = (props) => {
       {...rest}
       onChange={ e => {
         let value = e.currentTarget.value
-        if(validation && !context.state[stateName])
+        if(!context.state[stateName])
           value = e.currentTarget.value.trim()
 
         if({...rest}.type === "number" && value < 0) value = 0

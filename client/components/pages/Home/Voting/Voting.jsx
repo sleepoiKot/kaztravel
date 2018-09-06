@@ -34,14 +34,18 @@ const voting = ({context}) => (
       </div>
       {/* Countdown End */}
     </div>
-    <div className="col-md-12 mt-5">
-      <div className="text-center">
-        <button
-          type="button"
-          className="btn btn-outline-default waves-effect fill-form-button"
-          onClick={() => context.props.history.push('/form')}><h4>Заполнить анкету на участие</h4></button>
+    {context.props.authenticated ?
+      <div className="col-md-12 mt-5">
+        <div className="text-center">
+          <button
+            type="button"
+            className="btn btn-outline-default waves-effect fill-form-button"
+            onClick={() => context.props.history.push('/form')}><h4>Заполнить анкету на участие</h4></button>
+        </div>
       </div>
-    </div>
+      :
+      null
+    }
   </div>
 );
 
