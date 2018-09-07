@@ -2,7 +2,8 @@ import { Meteor } from 'meteor/meteor';
 
 import {
   insertDefaultUsers,
-  insertDefaultNominations
+  insertDefaultNominations,
+  insertDefaultNominationsStyling
 } from '/server/lib/defaultDataRelated'
 
 Meteor.startup(() => {
@@ -137,5 +138,35 @@ Meteor.startup(() => {
     }
   ]
 
+  const styling = [
+    {position: 'absolute', left: '0%', top: 0},
+    {position: 'absolute', left: '25%', top: 0},
+    {position: 'absolute', left: '50%', top: 0},
+    {position: 'absolute', left: '75%', top: 0},
+
+    {position: 'absolute', left: '0%', top: 276},
+    {position: 'absolute', left: '50%', top: 276},
+
+    {position: 'absolute', left: '25%', top: 552},
+    {position: 'absolute', left: '75%', top: 552},
+
+    {position: 'absolute', left: '0%', top: 828},
+    {position: 'absolute', left: '25%', top: 828},
+    {position: 'absolute', left: '50%', top: 828},
+    {position: 'absolute', left: '75%', top: 828},
+
+    {position: 'absolute', left: '0%', top: 1104},
+    {position: 'absolute', left: '50%', top: 1104},
+
+    {position: 'absolute', left: '25%', top: 1380},
+    {position: 'absolute', left: '75%', top: 1380},
+
+    {position: 'absolute', left: '0%', top: 1656},
+    {position: 'absolute', left: '25%', top: 1656},
+    {position: 'absolute', left: '50%', top: 1656},
+    {position: 'absolute', left: '75%', top: 1656},
+  ]
+
+  insertDefaultNominationsStyling(styling)
   insertDefaultNominations(nominations)
 });

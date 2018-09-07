@@ -1,4 +1,5 @@
 import { NominationsCollection } from '/api/nominations'
+import { NominationsStylingCollection } from '/api/nominationsStyling'
 
 export const insertDefaultUsers = (users) => {
   if(Meteor.users.find().count() !== 0)
@@ -20,5 +21,14 @@ export const insertDefaultNominations = (nominations) => {
       createdAt: new Date()
     }
     NominationsCollection.insert(finalData)
+  });
+}
+
+export const insertDefaultNominationsStyling = (styling) => {
+  if(NominationsStylingCollection.find().count() === styling.length)
+    return
+
+  styling.forEach(style => {
+    NominationsStylingCollection.insert(style)
   });
 }
