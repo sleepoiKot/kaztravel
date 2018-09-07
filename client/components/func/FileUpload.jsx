@@ -40,7 +40,7 @@ export default FileUpload = ({
               type="text"
               style={{height: 37, fontSize: 14}}/>
               <a
-                onClick={() => context.setState({[stateName]: ''})}
+                onClick={() => context.setState({[stateName]: {}})}
                 style={{color: "#000"}}
                 className="file-path validate"><i className="fa fa-remove" /></a>
           </Aux>
@@ -114,7 +114,7 @@ export default FileUpload = ({
       className="c-button-1 -color-black-default -hover-black-outline -size-small">
         {buttonName}
       </button>
-      {multi ? context.state[stateName].length !== 0 ? renderUploadingFiles() : null : context.state[stateName] ? renderUploadingFile() : null}
+      {multi ? context.state[stateName].length !== 0 ? renderUploadingFiles() : null : !_.isEmpty(context.state[stateName]) ? renderUploadingFile() : null}
     </div>
   )
 }

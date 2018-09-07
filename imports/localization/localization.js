@@ -14,11 +14,13 @@ export const locStrings = {
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Online application',
     formLead: 'Application for participation of the award from «Kazakh Tourism»',
+    formNomination: 'Nomination',
     formEmail: "Email",
     formLastName: 'Last name',
     formFirstName: 'First name',
     formMiddleName: 'Middle name',
     formOrganization: 'Organization',
+    formOrganizationName: 'Organization name',
     formOrganizationAddress: 'Organization address',
     formOrganizationFunctions: 'Organization functions',
     formOrganizationPortfolio: 'Organization portfolio',
@@ -27,6 +29,8 @@ export const locStrings = {
     formAddProject: 'Add project',
     formAdditionalInfo: 'Additional information/photos (in the application)',
     formYoutubeLink: 'Link to a video in YouTube',
+    formTypeSMSCode: 'Enter the SMS code received at registration',
+    formCoverImage: 'Add cover image',
 
     // Registration
     registrationEmail: 'Your email',
@@ -51,12 +55,27 @@ export const locStrings = {
     send: 'Send',
     save: 'Save',
     adminTableActions: 'Actions',
+    confirmCode: 'Confirm code',
 
     // Validation Labels
     emailValidation: 'Invalid e-mail format',
 
     // Icon titles
     titleWatchForm: 'watch form',
+
+    // Toastr Messages
+    oopsSmthWentWrong: 'Oops... something went wrong',
+    nominationRequired: 'Nomination required',
+    invalidEmail: 'Invalid email',
+    formSaveSuccess: 'Your form saved',
+    codeMustBeFourDigits: 'The code must consist of 4 digits',
+    wrongSMSCode: 'Wrong SMS code',
+    verificationSuccess: 'Verification was successful',
+    imagesLimit: 'A maximum of 10 images are allowed',
+    imagesLimitMessage: 'Number of uploaded files exceeded',
+    fileSizeLimit: 'The uploading file must not exceed 5 mb',
+    fileIsNotPDFformat: 'The uploading file is not a \"PDF\" file',
+    fileIsNotImage: 'The uploading file is not an image file',
   },
   ru: {
     // Admin Navigation Items
@@ -73,11 +92,13 @@ export const locStrings = {
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Онлайн заявка',
     formLead: 'Заявка на участие премии от «Kazakh Tourism»',
+    formNomination: 'Номинация',
     formEmail: "Email",
     formLastName: 'Фамилия',
     formFirstName: 'Имя',
     formMiddleName: 'Отчество',
     formOrganization: 'Организация',
+    formOrganizationName: 'Наименование организации',
     formOrganizationAddress: 'Адрес организации',
     formOrganizationFunctions: 'Функции организации',
     formOrganizationPortfolio: 'Портфолио организации',
@@ -86,6 +107,8 @@ export const locStrings = {
     formAddProject: 'Добавить проект',
     formAdditionalInfo: 'Дополнительная информация/фотографии (в приложении)',
     formYoutubeLink: 'Ссылка на видеоролик в YouTube',
+    formTypeSMSCode: 'Введите СМС код полученный при регистрации',
+    formCoverImage: 'Добавить фото на обложку',
 
     // Registration
     registrationEmail: 'Ваш email',
@@ -110,12 +133,27 @@ export const locStrings = {
     send: 'Отправить',
     save: 'Сохранить',
     adminTableActions: 'Действия',
+    confirmCode: 'Подтвердить код',
 
     // Validation Labels
     emailValidation: 'Неверный формат e-mail',
 
     // Icon titles
     titleWatchForm: 'посмотреть анкету',
+
+    // Toastr Messages
+    oopsSmthWentWrong: 'Упс... что-то пошло не так',
+    nominationRequired: 'Номинация обязательна для заполнения',
+    invalidEmail: 'Неверный формат email',
+    formSaveSuccess: 'Ваша анкета сохранена',
+    codeMustBeFourDigits: 'Код должен состоять из 4 цифр',
+    wrongSMSCode: 'Неверный код СМС',
+    verificationSuccess: 'Верификация прошла успешно',
+    imagesLimit: 'Допускается не более 10 изображений',
+    imagesLimitMessage: 'Количество загруженных файлов превышено',
+    fileSizeLimit: 'Загружаемый файл не должен превышать 5 мб',
+    fileIsNotPDFformat: 'Загружаемый файл не является файлом формата \"PDF\"',
+    fileIsNotImage: 'Загружаемый файл не является изображением',
   },
   kz: {
     // Admin Navigation Items
@@ -132,11 +170,13 @@ export const locStrings = {
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Онлайн өтінім',
     formLead: '«Қазақ туризмінен» марапатқа қатысуға өтінім',
+    formNomination: 'Номинация',
     formEmail: "Email",
     formLastName: 'Тегі',
     formFirstName: 'Аты',
     formMiddleName: 'Орташа аты',
     formOrganization: 'Ұйым',
+    formOrganizationName: 'Ұйымның атауы',
     formOrganizationAddress: 'Ұйымдастыру мекен-жайы',
     formOrganizationFunctions: 'Ұйымның функциялары',
     formOrganizationPortfolio: 'Ұйымның портфолиосы',
@@ -145,7 +185,8 @@ export const locStrings = {
     formAddProject: 'Жобаны қосыңыз',
     formAdditionalInfo: 'Қосымша ақпарат/фотосуреттер (қосымшаға)',
     formYoutubeLink: 'Youtube сайтындағы бейнеге сілтеме',
-    youtubePlaceholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    formTypeSMSCode: 'Тіркеу кезінде алынған SMS-кодты енгізіңіз',
+    formCoverImage: 'Мұқабаға фотосурет қосу',
 
     // Registration
     registrationEmail: 'Сіздің email',
@@ -162,6 +203,7 @@ export const locStrings = {
     addressPlaceholder: 'Астана, Мәңгілік Ел 28б',
     phonePlaceholder: '+7(777) 777-77-77',
     webPlaceholder: 'http://www.kaztravel.kz',
+    youtubePlaceholder: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
 
     // Constant Labels
     chooseFile: 'Файлды таңдаңыз',
@@ -169,11 +211,26 @@ export const locStrings = {
     send: 'Жіберу',
     save: 'Сақтау',
     adminTableActions: 'Әрекеттер',
+    confirmCode: 'Кодты тексеру',
 
     // Validation Labels
     emailValidation: 'Электрондық пошта пішімі жарамсыз',
 
     // Icon titles
     titleWatchForm: 'бейінді қарау',
+
+    // Toastr Messages
+    oopsSmthWentWrong: 'Көрінсе... бірдеңе дұрыс емес',
+    nominationRequired: 'Тағайындау толтыру үшін міндетті болып табылады',
+    invalidEmail: 'Жарамсыз email',
+    formSaveSuccess: 'Профиліңіз сақталды',
+    codeMustBeFourDigits: 'Код 4 саннан тұруы керек',
+    wrongSMSCode: 'SMS-код жарамсыз',
+    verificationSuccess: 'Тексеру сәтті болды',
+    imagesLimit: 'Максимум 10 сурет рұқсат етілген',
+    imagesLimitMessage: 'Жүктелген файлдардың саны асты',
+    fileSizeLimit: 'Жүктелген файл 5 мб-нан аспауы керек',
+    fileIsNotPDFformat: 'Жүктеу файлы \"PDF\" файлы емес',
+    fileIsNotImage: 'Жүктелген файл сурет емес',
   }
 }

@@ -36,7 +36,8 @@ const form = ({context, submitForm}) => {
                         <div className="row">
                           <div className="col-sm-6">
                             <div className="c-form-group">
-                              <label className="c-form-label">Номинация</label>
+                              <Element name="nomination" />
+                              <label className="c-form-label">{context.props.locStrings.formNomination} *</label>
                               <Select
                                 styles={{
                                   option: (base, state) => ({
@@ -53,6 +54,7 @@ const form = ({context, submitForm}) => {
                                     })
                                   }
                                 }}
+                                backspaceRemovesValue={false}
                                 value={context.state.formNomination}
                                 onChange={value => context.setState({ formNomination: value })}
                                 placeholder={context.props.locStrings.selectPlaceholder}
@@ -139,6 +141,7 @@ const form = ({context, submitForm}) => {
                                     })
                                   }
                                 }}
+                                backspaceRemovesValue={false}
                                 value={context.state.formOrganization}
                                 onChange={value => context.setState({ formOrganization: value })}
                                 placeholder={context.props.locStrings.selectPlaceholder}
@@ -147,7 +150,7 @@ const form = ({context, submitForm}) => {
                           </div>
                           <div className="col-sm-6">
                             <div className="c-form-group">
-                              <label className="c-form-label">Наименование организации</label>
+                              <label className="c-form-label">{context.props.locStrings.formOrganizationName}</label>
                               <Input
                                 type="text"
                                 context={context}
@@ -240,6 +243,21 @@ const form = ({context, submitForm}) => {
                           </div>
                           <div className="col-sm-6">
                             <div className="c-form-group">
+                              <label className="c-form-label">{context.props.locStrings.formCoverImage} (*.jpg)</label>
+                              <FileUploadContainer
+                                main
+                                context={ context }
+                                stateName='coverImage'
+                                ext="image"
+                                buttonName={context.props.locStrings.chooseFile}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                        <div className="row">
+                          <div className="col-sm-6">
+                            <div className="c-form-group">
                               <label className="c-form-label">{context.props.locStrings.formAdditionalInfo}</label>
                               <FileUploadContainer
                                 multi
@@ -249,9 +267,6 @@ const form = ({context, submitForm}) => {
                               />
                             </div>
                           </div>
-                        </div>
-                        <hr />
-                        <div className="row">
                           <div className="col-sm-6">
                             <div className="c-form-group">
                               <label className="c-form-label">{context.props.locStrings.formYoutubeLink}</label>
@@ -285,7 +300,7 @@ const form = ({context, submitForm}) => {
                         <div className="row">
                           <div className="col-sm-6">
                             <div className="c-form-group">
-                              <label className="c-form-label">Введите СМС код полученный при регистрации</label>
+                              <label className="c-form-label">{context.props.locStrings.formTypeSMSCode}</label>
                               <Input
                                 type="number"
                                 context={context}
@@ -303,7 +318,7 @@ const form = ({context, submitForm}) => {
                               <button
                                 type="submit"
                                 className="c-button-1 -color-green-default -hover-green-outline -size-small">
-                                Подтвердить код
+                                {context.props.locStrings.confirmCode}
                               </button>
                             </div>
                           </div>

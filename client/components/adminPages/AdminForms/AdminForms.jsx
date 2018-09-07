@@ -3,22 +3,26 @@ import { Link } from 'react-router-dom'
 
 const adminForms = ({context}) => {
   renderForms = () => (
-    context.props.forms.map((form, index) => (
-      <tr key={form._id}>
-        <td>{form.nomination.label}</td>
-        <td>{form.organizationName}</td>
-        <td>{form.email}</td>
-        <td className="actions text-center">
-          <Link
-            className="on-default"
-            title={context.props.locStrings.titleWatchForm}
-            to={`/nominations/${form._id}`}
-          >
-            <i className="fas fa-eye" />
-          </Link>
-        </td>
-      </tr>
-    ))
+    context.props.forms.map((form, index) => {
+      let nomination = context.props.nominations.find( nom => nom._id === form.nomination.value)
+
+      return (
+        <tr key={form._id}>
+          <td>{form.nomination.label}</td>
+          <td>{form.organizationName}</td>
+          <td>{form.email}</td>
+          <td className="actions text-center">
+            <Link
+              className="on-default"
+              title={context.props.locStrings.titleWatchForm}
+              to={nomination ? `/nomination/${nomination.suffix}/${form._id}` : '/'}
+            >
+              <i className="fas fa-eye" />
+            </Link>
+          </td>
+        </tr>
+      )
+    })
   )
 
   return (

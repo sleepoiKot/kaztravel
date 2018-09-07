@@ -60,7 +60,7 @@ class App extends Component {
           <Authenticated path="/" component={ TopBarContainer } {...this.props} />
           <Switch>
             <Authenticated exact path="/" component={ HomeContainer } {...this.props} />
-            <Authenticated exact path="/nomination/:_id" component={ NominationContainer } {...this.props} />
+            <Authenticated exact path="/nomination/:suffix" component={ NominationContainer } {...this.props} />
             <Authenticated exact path="/form" component={ FormContainer } {...this.props} />
             <Redirect to="/" />
           </Switch>

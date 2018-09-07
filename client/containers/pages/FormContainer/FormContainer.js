@@ -16,10 +16,11 @@ const defaultState = {
   formOrganizationName: '',
   formOrganizationAddress: '',
   formOrganizationFunctions: '',
-  organizationPortfolio: '',
+  organizationPortfolio: {},
   formPhone: '',
   formWeb: '',
-  project: '',
+  project: {},
+  coverImage: {},
   photos: [],
   formYoutubeLink: '',
 
@@ -37,7 +38,7 @@ class FormContainer extends Component {
     if(Meteor.userId()){
       Meteor.call('get.form', (err, res) => {
         if(err){
-          toastr.error(err.reason, 'Упс... что-то пошло не так')
+          toastr.error(err.reason, this.props.locStrings.oopsSmthWentWrong)
         } else if(!res){
           this.setState({formEmail: Meteor.user().emails[0].address})
         } else {
@@ -47,7 +48,7 @@ class FormContainer extends Component {
             formLastName: res.lastName,
             formFirstName: res.firstName,
             formMiddleName: res.middleName,
-            formOrganization: res.organization,
+            formOrganization: _.isEmpty(res.organization) ? '' : res.organization,
             formOrganizationName: res.organizationName,
             formOrganizationAddress: res.organizationAddress,
             formOrganizationFunctions: res.organizationFunctions,
@@ -55,6 +56,7 @@ class FormContainer extends Component {
             formPhone: res.phone,
             formWeb: res.web,
             project: res.project,
+            coverImage: res.coverImage,
             photos: res.photos,
             formYoutubeLink: res.youtubeLink
           })
@@ -79,10 +81,23 @@ class FormContainer extends Component {
       organizationPortfolio,
       formPhone,
       formWeb,
+      coverImage,
       project,
       photos,
       formYoutubeLink
     } = this.state
+
+    // Nomination client side validation
+    if(!formNomination) {
+      toastr.warning(this.props.locStrings.nominationRequired)
+      scroller.scrollTo('nomination', {
+        duration: 800,
+        delay: 0,
+        smooth: 'easeInOutQuart'
+      })
+
+      return
+    }
 
     // Email client side validation
     let emailValidation = emailValidationRegEx.test(String(formEmail).toLowerCase())
@@ -96,7 +111,7 @@ class FormContainer extends Component {
           errors
         }
       }, () => {
-        toastr.warning("Неверный формат email")
+        toastr.warning(this.props.locStrings.invalidEmail)
         scroller.scrollTo('formEmail', {
           duration: 800,
           delay: 0,
@@ -112,7 +127,7 @@ class FormContainer extends Component {
       lastName: formLastName,
       firstName: formFirstName,
       middleName: formMiddleName,
-      organization: formOrganization,
+      organization: formOrganization ? formOrganization : {},
       organizationName: formOrganizationName,
       organizationAddress: formOrganizationAddress,
       organizationFunctions: formOrganizationFunctions,
@@ -120,6 +135,7 @@ class FormContainer extends Component {
       phone: formPhone,
       web: formWeb,
       project: project,
+      coverImage: coverImage,
       photos: photos,
       youtubeLink: formYoutubeLink
     }
@@ -128,9 +144,9 @@ class FormContainer extends Component {
 
     Meteor.call('form.insert', formId, data, (err, res) => {
       if(err){
-        toastr.error(err.reason, "Упс, что-то пошло не так")
+        toastr.error(err.reason, this.props.locStrings.oopsSmthWentWrong)
       } else {
-        toastr.success("Ваша анкета сохранена")
+        toastr.success(this.props.locStrings.formSaveSuccess)
       }
     })
   }
@@ -139,18 +155,18 @@ class FormContainer extends Component {
     e.preventDefault()
 
     if(this.state.smsCode.length !== 4){
-      toastr.warning('Код должен состоять из 4 цифр')
+      toastr.warning(this.props.locStrings.codeMustBeFourDigits)
       return
     }
 
     Meteor.call('verify.sms', this.state.smsCode, (err, res) => {
       if(err){
-        toastr.error(err.reason, "Упс, что-то пошло не так")
+        toastr.error(err.reason, this.props.locStrings.oopsSmthWentWrong)
       } else if(!res) {
-        toastr.error('Неверный код СМС')
+        toastr.error(this.props.locStrings.wrongSMSCode)
         this.setState(defaultState)
       } else {
-        toastr.success("Верификация прошла успешно")
+        toastr.success(this.props.locStrings.verificationSuccess)
       }
     })
   }

@@ -49,10 +49,10 @@ export default class FileUploadContainer extends Component {
   uploaderChangeHandler(e) {
     const files = e.currentTarget.files
     const { context, stateName, multi, main, ext } = this.props
-    const { user } = context.props
+    const { user, locStrings } = context.props
 
-    if(files.length > 10 || multi && context.state[stateName].length > 9) {
-      toastr.warning('Допускается не более 10 изображений', 'Количество загруженных файлов превышено')
+    if(files.length > 10 || multi && (context.state[stateName].length + files.length) > 10) {
+      toastr.warning(locStrings.imagesLimit, locStrings.imagesLimitMessage)
       return
     }
 
@@ -63,13 +63,21 @@ export default class FileUploadContainer extends Component {
       const type = theFile.type.split('/')[1]
 
       if(theFile.size > SIZE_LIMIT) {
-        toastr.error("Загружаемый файл не должен превышать 5 мб")
+        toastr.error(locStrings.fileSizeLimit)
         continue
       }
 
       if(ext === 'pdf' && type !== 'pdf'){
-        toastr.error("Загружаемый файл не является файлом формата \"PDF\"")
+        toastr.error(locStrings.fileIsNotPDFformat)
         continue
+      }
+
+      if(ext === 'image') {
+        let isPic = PHEXT.some( ext => ext === type)
+        if(!isPic || mime !== 'image'){
+          toastr.error(locStrings.fileIsNotImage)
+          continue
+        }
       }
 
       const uploadingFile = {}
