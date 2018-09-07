@@ -25,7 +25,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "фестивали конкурсы концерты спектакли",
+      shortDescription: {
+        ru: "фестивали конкурсы концерты спектакли",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-1-500x500.jpg",
       suffix: "event"
     },
     {
@@ -34,7 +39,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "внутренний и въездной туризм",
+      shortDescription: {
+        ru: "внутренний и въездной туризм",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-13-500x1000.jpg",
       suffix: "company"
     },
     {
@@ -43,7 +53,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "внутренний и въездной туризм",
+      shortDescription: {
+        ru: "внутренний и въездной туризм",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-4-500x500.jpg",
       suffix: "product"
     },
     {
@@ -52,7 +67,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "",
+      shortDescription: {
+        ru: "",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-5-500x1000.jpg",
       suffix: "guide"
     },
     {
@@ -61,7 +81,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "",
+      shortDescription: {
+        ru: "",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-11-500x1000.jpg",
       suffix: "hotel"
     },
     {
@@ -70,7 +95,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "",
+      shortDescription: {
+        ru: "",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-3-500x500.jpg",
       suffix: "youth"
     },
     {
@@ -79,7 +109,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "маршрут, включающий выбор определенной тематической направленности",
+      shortDescription: {
+        ru: "маршрут, включающий выбор определенной тематической направленности",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-7-500x1000.jpg",
       suffix: "culture"
     },
     {
@@ -88,7 +123,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "веб-ресуры мобильные приложения",
+      shortDescription: {
+        ru: "веб-ресуры мобильные приложения",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-6-500x500.jpg",
       suffix: "web"
     },
     {
@@ -97,7 +137,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "",
+      shortDescription: {
+        ru: "",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-14-500x500.jpg",
       suffix: "journalist"
     },
     {
@@ -106,7 +151,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "",
+      shortDescription: {
+        ru: "",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-8-500x500.jpg",
       suffix: "media"
     },
     {
@@ -115,7 +165,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "печатные издания туристических путеводителей",
+      shortDescription: {
+        ru: "печатные издания туристических путеводителей",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-9-500x500.jpg",
       suffix: "guidebook"
     },
     {
@@ -124,7 +179,12 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "оценивается деательность ТИЦ разработка и продвижение турмаршрутов",
+      shortDescription: {
+        ru: "оценивается деательность ТИЦ разработка и продвижение турмаршрутов",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-10-500x500.jpg",
       suffix: "info"
     },
     {
@@ -133,38 +193,43 @@ Meteor.startup(() => {
         kz: "",
         en: ""
       },
-      shortDescription: "туристский маршрут, который ранее не был реализован",
+      shortDescription: {
+        ru: "туристский маршрут, который ранее не был реализован",
+        kz: "",
+        en: ""
+      },
+      src: "/assets/img/portfolio-10-500x500.jpg",
       suffix: "route"
     }
   ]
 
   const styling = [
-    {position: 'absolute', left: '0%', top: 0},
-    {position: 'absolute', left: '25%', top: 0},
-    {position: 'absolute', left: '50%', top: 0},
-    {position: 'absolute', left: '75%', top: 0},
+    {i: 1, position: 'absolute', left: '0%', top: 0},
+    {i: 2, position: 'absolute', left: '25%', top: 0},
+    {i: 3, position: 'absolute', left: '50%', top: 0},
+    {i: 4, position: 'absolute', left: '75%', top: 0},
 
-    {position: 'absolute', left: '0%', top: 276},
-    {position: 'absolute', left: '50%', top: 276},
+    {i: 5, position: 'absolute', left: '0%', top: 276},
+    {i: 6, position: 'absolute', left: '50%', top: 276},
 
-    {position: 'absolute', left: '25%', top: 552},
-    {position: 'absolute', left: '75%', top: 552},
+    {i: 7, position: 'absolute', left: '25%', top: 552},
+    {i: 8, position: 'absolute', left: '75%', top: 552},
 
-    {position: 'absolute', left: '0%', top: 828},
-    {position: 'absolute', left: '25%', top: 828},
-    {position: 'absolute', left: '50%', top: 828},
-    {position: 'absolute', left: '75%', top: 828},
+    {i: 9, position: 'absolute', left: '0%', top: 828},
+    {i: 10, position: 'absolute', left: '25%', top: 828},
+    {i: 11, position: 'absolute', left: '50%', top: 828},
+    {i: 12, position: 'absolute', left: '75%', top: 828},
 
-    {position: 'absolute', left: '0%', top: 1104},
-    {position: 'absolute', left: '50%', top: 1104},
+    {i: 13, position: 'absolute', left: '0%', top: 1104},
+    {i: 14, position: 'absolute', left: '50%', top: 1104},
 
-    {position: 'absolute', left: '25%', top: 1380},
-    {position: 'absolute', left: '75%', top: 1380},
+    {i: 15, position: 'absolute', left: '25%', top: 1380},
+    {i: 16, position: 'absolute', left: '75%', top: 1380},
 
-    {position: 'absolute', left: '0%', top: 1656},
-    {position: 'absolute', left: '25%', top: 1656},
-    {position: 'absolute', left: '50%', top: 1656},
-    {position: 'absolute', left: '75%', top: 1656},
+    {i: 17, position: 'absolute', left: '0%', top: 1656},
+    {i: 18, position: 'absolute', left: '25%', top: 1656},
+    {i: 19, position: 'absolute', left: '50%', top: 1656},
+    {i: 20, position: 'absolute', left: '75%', top: 1656},
   ]
 
   insertDefaultNominationsStyling(styling)

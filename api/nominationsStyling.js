@@ -3,7 +3,7 @@ export const NominationsStylingCollection = new Mongo.Collection('nominationsSty
 
 if (Meteor.isServer) {
   Meteor.publish('nominations.styling', function(){
-    return NominationsStylingCollection.find()
+    return NominationsStylingCollection.find({}, {sort: {i: 1}})
   });
 
   Meteor.methods({

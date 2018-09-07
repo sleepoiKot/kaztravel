@@ -18,12 +18,48 @@ if (Meteor.isServer) {
           min: 2
         },
         'data.name': {
+          type: Object,
+          label: "Nomination name",
+          min: 3,
+          max: 3
+        },
+        'data.name.ru': {
           type: String,
-          label: "Nomination name"
+          label: "Nomination name in Russian"
+        },
+        'data.name.kz': {
+          type: String,
+          label: "Nomination name in Kazakh"
+        },
+        'data.name.en': {
+          type: String,
+          label: "Nomination name in English"
         },
         'data.shortDescription': {
+          type: Object,
+          label: "Nomination short description",
+          optional: true,
+          min: 3,
+          max: 3
+        },
+        'data.shortDescription.ru': {
           type: String,
-          label: "Nomination short description"
+          label: "Nomination short description in Russian",
+          optional: true
+        },
+        'data.shortDescription.kz': {
+          type: String,
+          label: "Nomination short description in Kazakh",
+          optional: true
+        },
+        'data.shortDescription.en': {
+          type: String,
+          label: "Nomination short description in English",
+          optional: true
+        },
+        'data.src': {
+          type: String,
+          label: "Nomination image source"
         },
         'data.suffix': {
           type: String,
@@ -62,12 +98,48 @@ if (Meteor.isServer) {
           min: 2
         },
         'data.name': {
+          type: Object,
+          label: "Nomination name",
+          min: 3,
+          max: 3
+        },
+        'data.name.ru': {
           type: String,
-          label: "Nomination name"
+          label: "Nomination name in Russian"
+        },
+        'data.name.kz': {
+          type: String,
+          label: "Nomination name in Kazakh"
+        },
+        'data.name.en': {
+          type: String,
+          label: "Nomination name in English"
         },
         'data.shortDescription': {
+          type: Object,
+          label: "Nomination short description",
+          optional: true,
+          min: 3,
+          max: 3
+        },
+        'data.shortDescription.ru': {
           type: String,
-          label: "Nomination short description"
+          label: "Nomination short description in Russian",
+          optional: true
+        },
+        'data.shortDescription.kz': {
+          type: String,
+          label: "Nomination short description in Kazakh",
+          optional: true
+        },
+        'data.shortDescription.en': {
+          type: String,
+          label: "Nomination short description in English",
+          optional: true
+        },
+        'data.src': {
+          type: String,
+          label: "Nomination image source"
         }
       }).validate({ _id, data })
 

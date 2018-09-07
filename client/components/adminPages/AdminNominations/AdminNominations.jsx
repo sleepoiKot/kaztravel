@@ -10,20 +10,25 @@ const adminNominations = ({context}) => {
     context.props.nominations.map((nomination, index) => (
       <tr key={nomination._id}>
         <td>{index+1}</td>
-        <td>{nomination.name.ru}</td>
-        <td>{nomination.shortDescription}</td>
+        <td>{nomination.name[context.props.lang]}</td>
+        <td>{nomination.shortDescription[context.props.lang]}</td>
         <td className="actions text-center">
           <a
             href="#"
             className="on-default"
-            title="редактировать"
+            title={context.props.locStrings.edit}
             data-toggle="modal"
             data-target="#edit-nomination-modal"
             onClick={() => {
               context.setState({
                 itemId: nomination._id,
-                editNominationName: nomination.name,
-                editNominationShortDescription: nomination.shortDescription
+                editNominationNameRu: nomination.name.ru,
+                editNominationNameKz: nomination.name.kz,
+                editNominationNameEn: nomination.name.en,
+                editNominationShortDescriptionRu: nomination.shortDescription.ru,
+                editNominationShortDescriptionKz: nomination.shortDescription.kz,
+                editNominationShortDescriptionEn: nomination.shortDescription.en,
+                editNominationSource: nomination.src
               })
             }}
           >
@@ -32,7 +37,7 @@ const adminNominations = ({context}) => {
           <a
             href="#"
             className="red-text ml-2"
-            title="удалить"
+            title={context.props.locStrings.delete}
             onClick={() => context.setState({itemId: nomination._id, itemName: nomination.name.ru})}
             data-toggle="modal"
             data-target="#remove-nomination-modal"
@@ -50,12 +55,12 @@ const adminNominations = ({context}) => {
         <div className="card">
           <div className="card-header">
             <div className="d-flex align-items-center">
-              <h3><strong>Номинации</strong></h3>
+              <h3><strong>{context.props.locStrings.adminNominations}</strong></h3>
               <button
                 type="button"
                 data-toggle="modal"
                 data-target="#add-nomination-modal"
-                className="btn-md btn btn-outline-warning waves-effect">Добавить <i className="fa fa-plus"></i></button>
+                className="btn-md btn btn-outline-warning waves-effect">{context.props.locStrings.add} <i className="fa fa-plus"></i></button>
             </div>
           </div>
           <div className="card-body">
@@ -65,9 +70,9 @@ const adminNominations = ({context}) => {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Название</th>
-                  <th>Краткое описание</th>
-                  <th className="text-center">Действия</th>
+                  <th>{context.props.locStrings.name}</th>
+                  <th>{context.props.locStrings.shortDescription}</th>
+                  <th className="text-center">{context.props.locStrings.adminTableActions}</th>
                 </tr>
               </thead>
               {/*Table head*/}
@@ -90,7 +95,7 @@ const adminNominations = ({context}) => {
         context={context}
       />
       <RemoveModal
-        titleName="Номинация"
+        titleName={context.props.locStrings.adminNomination}
         bodyContent={context.state.itemName}
         id="remove-nomination-modal"
         onConfirm={context.onDeleteNomination}

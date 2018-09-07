@@ -5,6 +5,9 @@ import moment from 'moment'
 import Home from '/client/components/pages/Home/Home'
 
 import { NominationsCollection } from '/api/nominations'
+import { NominationsStylingCollection } from '/api/nominationsStyling'
+
+import { multipleSubscribe } from '/client/libs/subscriptionsRelated'
 
 const defaultState = {
   // countdown state
@@ -35,14 +38,21 @@ class HomeContainer extends Component {
   }
 
   render() {
-    return <Home context={this} nominations={this.props.nominations}/>
+    return <Home
+      context={this}
+      nominations={this.props.nominations}
+      nomStyles={this.props.nominationsStyling.map(({position, left, top}) => ({ position, left, top }))}/>
   }
 }
 
 export default withTracker(() => {
-  Meteor.subscribe('nominations')
+  multipleSubscribe([
+    'nominations',
+    'nominations.styling'
+  ])
 
   return {
+    nominationsStyling: NominationsStylingCollection.find({}, {sort: {i: 1}}).fetch(),
     nominations: NominationsCollection.find().fetch()
   }
 })(HomeContainer);

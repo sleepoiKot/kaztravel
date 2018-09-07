@@ -101,6 +101,7 @@ export default withTracker(() => {
   return {
     locStrings: locStrings[lang],
     loggingIn,
+    lang,
     authenticated: !loggingIn && !!userId,
     user,
     userIsAdmin

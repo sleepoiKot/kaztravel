@@ -10,6 +10,15 @@ export const locStrings = {
     adminFormTableOrganizationName: 'Organization name',
     adminFormTableEmail: 'Email',
 
+    // Admin Nominations
+    adminNominations: 'Nominations',
+    adminNomination: 'Nomination',
+    adminEditNomination: 'Edit nomination',
+    adminNominationName: 'Nomination name',
+    adminNominationShortDescription: 'Nomination short description',
+    adminNominationSource: 'Nomination image source',
+    adminAddNomination: 'Add nomination',
+
     // Online Application
     formSup: 'NATIONAL TOURISM AWARDS',
     formHead: 'Online application',
@@ -38,6 +47,11 @@ export const locStrings = {
     registrationPassword: 'Password',
     registrationPasswordConfirm: 'Confirm your password',
 
+    // Nominations
+    nominationsSup: 'KAZAKH TOURISM',
+    nominationsHead: 'Nominations',
+    nominationsLead: 'Geography of the competition - Republic of Kazakhstan',
+
     // Placeholders
     emailPlaceholder: 'mail@kaztravel.kz',
     lastNamePlaceholder: 'Fen',
@@ -56,6 +70,12 @@ export const locStrings = {
     save: 'Save',
     adminTableActions: 'Actions',
     confirmCode: 'Confirm code',
+    edit: 'edit',
+    delete: 'delete',
+    add: 'Add',
+    name: 'Name',
+    shortDescription: 'Short description',
+    close: 'Close',
 
     // Validation Labels
     emailValidation: 'Invalid e-mail format',
@@ -76,6 +96,10 @@ export const locStrings = {
     fileSizeLimit: 'The uploading file must not exceed 5 mb',
     fileIsNotPDFformat: 'The uploading file is not a \"PDF\" file',
     fileIsNotImage: 'The uploading file is not an image file',
+    nominationInsertSuccess: 'Nomination successfully added',
+    nominationEditSuccess: 'Nomination successfully edited',
+    nominationDeleteSuccess: 'Nomination successfully deleted',
+    fillInAllTheFields: 'Fill in all the fields to continue',
   },
   ru: {
     // Admin Navigation Items
@@ -87,6 +111,15 @@ export const locStrings = {
     adminFormTableNomination: 'Номинация',
     adminFormTableOrganizationName: 'Наименование организации',
     adminFormTableEmail: 'Email',
+
+    // Admin Nominations
+    adminNominations: 'Номинации',
+    adminNomination: 'Номинация',
+    adminEditNomination: 'Редактировать номинацию',
+    adminNominationName: 'Наименование номинации',
+    adminNominationShortDescription: 'Краткое описание номинации',
+    adminNominationSource: 'Ссылка на изображение номинации',
+    adminAddNomination: 'Добавить номинацию',
 
     // Online Application
     formSup: 'NATIONAL TOURISM AWARDS',
@@ -116,6 +149,11 @@ export const locStrings = {
     registrationPassword: 'Пароль',
     registrationPasswordConfirm: 'Повторите ваш пароль',
 
+    // Nominations
+    nominationsSup: 'KAZAKH TOURISM',
+    nominationsHead: 'Номинации',
+    nominationsLead: 'География проведения конкурса – Республика Казахстан',
+
     // Placeholders
     emailPlaceholder: 'mail@kaztravel.kz',
     lastNamePlaceholder: 'Иванов',
@@ -134,6 +172,12 @@ export const locStrings = {
     save: 'Сохранить',
     adminTableActions: 'Действия',
     confirmCode: 'Подтвердить код',
+    edit: 'редактировать',
+    delete: 'удалить',
+    add: 'Добавить',
+    name: 'Название',
+    shortDescription: 'Краткое описание',
+    close: 'Закрыть',
 
     // Validation Labels
     emailValidation: 'Неверный формат e-mail',
@@ -154,6 +198,10 @@ export const locStrings = {
     fileSizeLimit: 'Загружаемый файл не должен превышать 5 мб',
     fileIsNotPDFformat: 'Загружаемый файл не является файлом формата \"PDF\"',
     fileIsNotImage: 'Загружаемый файл не является изображением',
+    nominationInsertSuccess: 'Номинация успешно добавлена',
+    nominationEditSuccess: 'Номинация успешно изменена',
+    nominationDeleteSuccess: 'Номинация успешно удалена',
+    fillInAllTheFields: 'Заполните все поля для продолжения',
   },
   kz: {
     // Admin Navigation Items
@@ -165,6 +213,15 @@ export const locStrings = {
     adminFormTableNomination: 'Номинация',
     adminFormTableOrganizationName: 'Ұйымның атауы',
     adminFormTableEmail: 'Email',
+
+    // Admin Nominations
+    adminNominations: 'Номинациялар',
+    adminNomination: 'Номинация',
+    adminEditNomination: 'Номинацияны өңдеңіз',
+    adminNominationName: 'Номинацияның атауы',
+    adminNominationShortDescription: 'Номинацияның қысқаша сипаттамасы',
+    adminNominationSource: 'Номинацияға арналған сурет сілтемесі',
+    adminAddNomination: 'Номинацияны қосыңыз',
 
     // Online Application
     formSup: 'NATIONAL TOURISM AWARDS',
@@ -194,6 +251,11 @@ export const locStrings = {
     registrationPassword: 'Құпия сөз',
     registrationPasswordConfirm: 'Құпия сөзіңізді қайталаңыз',
 
+    // Nominations
+    nominationsSup: 'KAZAKH TOURISM',
+    nominationsHead: 'Номинациялар',
+    nominationsLead: 'Байқаудың географиясы - Қазақстан Республикасы',
+
     // Placeholders
     emailPlaceholder: 'mail@kaztravel.kz',
     lastNamePlaceholder: 'Ахмет',
@@ -212,6 +274,12 @@ export const locStrings = {
     save: 'Сақтау',
     adminTableActions: 'Әрекеттер',
     confirmCode: 'Кодты тексеру',
+    edit: 'өңдеу',
+    delete: 'жою',
+    add: 'Жүктеп салу',
+    name: 'Атауы',
+    shortDescription: 'Қысқаша сипаттамасы',
+    close: 'Жабу',
 
     // Validation Labels
     emailValidation: 'Электрондық пошта пішімі жарамсыз',
@@ -232,5 +300,9 @@ export const locStrings = {
     fileSizeLimit: 'Жүктелген файл 5 мб-нан аспауы керек',
     fileIsNotPDFformat: 'Жүктеу файлы \"PDF\" файлы емес',
     fileIsNotImage: 'Жүктелген файл сурет емес',
+    nominationInsertSuccess: 'Номинация сәтті қосылды',
+    nominationEditSuccess: 'Номинация сәтті өзгерді',
+    nominationDeleteSuccess: 'Номинация сәтті жойылды',
+    fillInAllTheFields: 'Жалғастыру үшін барлық өрістерді толтырыңыз',
   }
 }

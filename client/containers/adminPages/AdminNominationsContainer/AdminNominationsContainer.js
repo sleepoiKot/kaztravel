@@ -9,11 +9,22 @@ const defaultState = {
   itemId: '',
   itemName: '',
 
-  addNominationName: '',
-  addNominationShortDescription: '',
+  addNominationNameRu: '',
+  addNominationNameKz: '',
+  addNominationNameEn: '',
+  addNominationShortDescriptionRu: '',
+  addNominationShortDescriptionKz: '',
+  addNominationShortDescriptionEn: '',
+  addNominationSource: '',
+  addNominationSuffix: '',
 
-  editNominationName: '',
-  editNominationShortDescription: '',
+  editNominationNameRu: '',
+  editNominationNameKz: '',
+  editNominationNameEn: '',
+  editNominationShortDescriptionRu: '',
+  editNominationShortDescriptionKz: '',
+  editNominationShortDescriptionEn: '',
+  editNominationSource: '',
 }
 
 class AdminNominationsContainer extends Component {
@@ -21,20 +32,36 @@ class AdminNominationsContainer extends Component {
 
   onAddNomination = () => {
     const {
-      addNominationName,
-      addNominationShortDescription
+      addNominationNameRu,
+      addNominationNameKz,
+      addNominationNameEn,
+      addNominationShortDescriptionRu,
+      addNominationShortDescriptionKz,
+      addNominationShortDescriptionEn,
+      addNominationSource,
+      addNominationSuffix
     } = this.state
 
     const data = {
-      name: addNominationName,
-      shortDescription: addNominationShortDescription
+      name: {
+        ru: addNominationNameRu,
+        kz: addNominationNameKz,
+        en: addNominationNameEn
+      },
+      shortDescription: {
+        ru: addNominationShortDescriptionRu,
+        kz: addNominationShortDescriptionKz,
+        en: addNominationShortDescriptionEn
+      },
+      src: addNominationSource,
+      suffix: addNominationSuffix
     }
 
     Meteor.call('nomination.insert', data, (err, res) => {
       if(err){
-        toastr.error(err.reason, "Что-то пошло не так!")
+        toastr.error(err.reason, this.props.locStrings.oopsSmthWentWrong)
       } else {
-        toastr.success("Номинация успешно добавлена в справочник")
+        toastr.success(this.props.locStrings.nominationInsertSuccess)
         this.setState(defaultState)
       }
     })
@@ -43,20 +70,34 @@ class AdminNominationsContainer extends Component {
   onEditNomination = () => {
     const {
       itemId,
-      editNominationName,
-      editNominationShortDescription
+      editNominationNameRu,
+      editNominationNameKz,
+      editNominationNameEn,
+      editNominationShortDescriptionRu,
+      editNominationShortDescriptionKz,
+      editNominationShortDescriptionEn,
+      editNominationSource
     } = this.state
 
     const data = {
-      name: editNominationName,
-      shortDescription: editNominationShortDescription
+      name: {
+        ru: editNominationNameRu,
+        kz: editNominationNameKz,
+        en: editNominationNameEn,
+      },
+      shortDescription: {
+        ru: editNominationShortDescriptionRu,
+        kz: editNominationShortDescriptionKz,
+        en: editNominationShortDescriptionEn,
+      },
+      src: editNominationSource
     }
 
     Meteor.call('nomination.edit', itemId, data, (err, res) => {
       if(err){
-        toastr.error(err.reason, "Что-то пошло не так!")
+        toastr.error(err.reason, this.props.locStrings.oopsSmthWentWrong)
       } else {
-        toastr.success("Номинация успешно изменена")
+        toastr.success(this.props.locStrings.nominationEditSuccess)
         this.setState(defaultState)
       }
     })
@@ -65,9 +106,9 @@ class AdminNominationsContainer extends Component {
   onDeleteNomination = () => {
     Meteor.call('nomination.delete', this.state.itemId, (err, res) => {
       if(err){
-        toastr.error(err.reason, "Что-то пошло не так!")
+        toastr.error(err.reason, this.props.locStrings.oopsSmthWentWrong)
       } else {
-        toastr.success("Номинация успешно удалена")
+        toastr.success(this.props.locStrings.nominationDeleteSuccess)
       }
     })
   }
