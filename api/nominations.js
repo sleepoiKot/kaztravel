@@ -5,7 +5,11 @@ export const NominationsCollection = new Mongo.Collection('nominations');
 if (Meteor.isServer) {
 
   Meteor.publish('nominations', function(){
-    return NominationsCollection.find({deleted: {$ne: true}})
+    return NominationsCollection.find({deleted: {$ne: true}}, {sort: { createdAt: 1}})
+  });
+
+  Meteor.publish('nomination', function(suffix){
+    return NominationsCollection.find({deleted: {$ne: true}, suffix})
   });
 
   Meteor.methods({

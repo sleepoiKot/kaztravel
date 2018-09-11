@@ -125,6 +125,31 @@ export default class FileUploadContainer extends Component {
               if(link) link.href = res
             }
           })
+          Meteor.call('get.thumbnail', fileObj, (err, res) => {
+            if(err) {
+              toastr.error(err.reason)
+            } else {
+              let uploadingFileLink = {}
+              if(multi) {
+                const linkedArrayOfImages = [...context.state[stateName]]
+                const pos = linkedArrayOfImages.map(img => img._id).indexOf(fileObj._id)
+
+                uploadingFileLink = {
+                  ...linkedArrayOfImages[pos],
+                  link: res
+                }
+
+                linkedArrayOfImages[pos] = uploadingFileLink
+                context.setState({ [stateName]: linkedArrayOfImages })
+              } else {
+                uploadingFileLink = {
+                  ...context.state[stateName],
+                  link: res
+                }
+                context.setState({ [stateName]: uploadingFileLink })
+              }
+            }
+          })
         }
      });
 

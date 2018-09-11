@@ -1,5 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { LogsCollection } from '/api/logs'
+import { NominationsCollection } from '/api/nominations'
 export const FormsCollection = new Mongo.Collection('forms');
 
 if (Meteor.isServer) {
@@ -9,6 +10,13 @@ if (Meteor.isServer) {
 
   Meteor.publish('form', function(_id){
     return FormsCollection.find({deleted: {$ne: true}, _id})
+  });
+
+  Meteor.publish('forms.category', function(category){
+    let nomination = NominationsCollection.findOne({suffix: category})
+    if(!nomination) throw new Meteor.Error(`Nomination not found, please check "nominations" DB for ${category}`)
+
+    return FormsCollection.find({deleted: {$ne: true}, 'nomination.value': nomination._id})
   });
 
   Meteor.methods({

@@ -41,6 +41,12 @@ if(Meteor.isServer) {
       if(fileRef){
         return DocsCollection.link(fileRef);
       }
+    },
+    'get.thumbnail'(file) {
+      let fileRef = DocsCollection.collection.findOne({_id: file._id});
+      if(fileRef){
+        return DocsCollection.link(fileRef, 'thumbnail');
+      }
     }
   })
 }

@@ -38,7 +38,7 @@ const voting = ({context}) => (
       <div className="text-center">
         <button
           type="button"
-          className="btn btn-outline-default waves-effect fill-form-button"
+          className="c-button-1 -color-black-default -hover-black-outline -size-xlarge"
           onClick={() => context.props.history.push('/form')}><h4>Заполнить анкету на участие</h4></button>
       </div>
     </div>

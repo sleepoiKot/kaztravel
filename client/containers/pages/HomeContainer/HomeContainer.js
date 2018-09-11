@@ -53,6 +53,6 @@ export default withTracker(() => {
 
   return {
     nominationsStyling: NominationsStylingCollection.find({}, {sort: {i: 1}}).fetch(),
-    nominations: NominationsCollection.find().fetch()
+    nominations: NominationsCollection.find({}, {sort: { createdAt: 1}}).fetch()
   }
 })(HomeContainer);

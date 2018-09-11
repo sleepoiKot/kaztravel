@@ -45,7 +45,7 @@ class App extends Component {
         <Public path="/" component={ TopBarContainer } {...this.props} />
         <Switch>
           <Public exact path="/" component={ HomeContainer } {...this.props} />
-          <Public exact path="/nomination/:_id" component={ NominationContainer } {...this.props} />
+          <Public exact path="/nomination/:suffix" component={ NominationContainer } {...this.props} />
           <Public exact path="/signup" component={ SignupContainer } {...this.props} />
           <Public exact path="/login" component={ LoginContainer } {...this.props} />
           <Public exact path="/form" component={ FormContainer } {...this.props} />
