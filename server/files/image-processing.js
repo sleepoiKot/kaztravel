@@ -55,7 +55,7 @@ const createThumbnails = (collection, fileRef, cb) => {
             .filter('Triangle');
 
           // Change width and height proportionally
-          img.resize(300).interlace('Line').write(path, (resizeError) => {
+          img.resize(500).interlace('Line').write(path, (resizeError) => {
             bound(() => {
               if (resizeError) {
                 console.error('[createThumbnails] [img.resize]', resizeError);

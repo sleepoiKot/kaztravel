@@ -22,6 +22,7 @@ import NominationContainer from './containers/pages/NominationContainer/Nominati
 import FormContainer from './containers/pages/FormContainer/FormContainer'
 import SignupContainer from './containers/pages/SignupContainer/SignupContainer'
 import LoginContainer from './containers/pages/LoginContainer/LoginContainer'
+import NominationFormContainer from './containers/pages/NominationContainer/NominationFormContainer/NominationFormContainer'
 
 import { cookie } from './libs/coreLib'
 import { locStrings } from '/imports/localization/localization'
@@ -41,11 +42,11 @@ class App extends Component {
   render() {
     let routes = (
       <Aux classNameAux="site-wrapper">
-        <Preloader/>
         <Public path="/" component={ TopBarContainer } {...this.props} />
         <Switch>
           <Public exact path="/" component={ HomeContainer } {...this.props} />
           <Public exact path="/nomination/:suffix" component={ NominationContainer } {...this.props} />
+          <Public exact path="/nomination/:suffix/:_id" component={ NominationFormContainer } {...this.props} />
           <Public exact path="/signup" component={ SignupContainer } {...this.props} />
           <Public exact path="/login" component={ LoginContainer } {...this.props} />
           <Public exact path="/form" component={ FormContainer } {...this.props} />
@@ -62,6 +63,7 @@ class App extends Component {
           <Switch>
             <Authenticated exact path="/" component={ HomeContainer } {...this.props} />
             <Authenticated exact path="/nomination/:suffix" component={ NominationContainer } {...this.props} />
+            <Authenticated exact path="/nomination/:suffix/:_id" component={ NominationFormContainer } {...this.props} />
             <Authenticated exact path="/form" component={ FormContainer } {...this.props} />
             <Redirect to="/" />
           </Switch>
@@ -72,6 +74,7 @@ class App extends Component {
 
     return (
       <Aux>
+        <Preloader/>
         {routes}
         {/* Back Top */}
         <div className="scrollToTop">

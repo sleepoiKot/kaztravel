@@ -15,7 +15,7 @@ const nomination = ({context}) => {
         <div className="c-portfolio-1-item-inner">
           <div className="c-portfolio-1-media">
             <div className="c-portfolio-1-photo">
-              <img src={form.coverImage ? form.coverImage.link : "/assets/img/portfolio-1-500x500.jpg"} alt={form.organizationName} />
+              <img src={form.coverImage.link ? form.coverImage.link : "/assets/img/portfolio-1-500x500.jpg"} alt={form.organizationName} />
             </div>
             <div className="c-portfolio-1-caption -style-1 -visible">
               <div className="c-portfolio-1-caption-inner">

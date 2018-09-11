@@ -148,8 +148,11 @@ if (Meteor.isServer) {
       }
       LogsCollection.insert(log)
 
+      let embeddedLink = data.youtubeLink.replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/")
+
       const finaldata = {
         ...data,
+        youtubeLink: embeddedLink,
         createdAt: new Date()
       }
 

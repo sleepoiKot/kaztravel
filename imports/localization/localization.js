@@ -52,6 +52,11 @@ export const locStrings = {
     nominationsHead: 'Nominations',
     nominationsLead: 'Geography of the competition - Republic of Kazakhstan',
 
+    // Nomination Form
+    nominationFormNomination: 'NOMINATION',
+    nominationFormOwner: 'Owner',
+    nominationFormVotes: 'Votes',
+
     // Placeholders
     emailPlaceholder: 'mail@kaztravel.kz',
     lastNamePlaceholder: 'Fen',
@@ -154,6 +159,11 @@ export const locStrings = {
     nominationsHead: 'Номинации',
     nominationsLead: 'География проведения конкурса – Республика Казахстан',
 
+    // Nomination Form
+    nominationFormNomination: 'НОМИНАЦИЯ',
+    nominationFormOwner: 'Владелец',
+    nominationFormVotes: 'Количество голосов',
+
     // Placeholders
     emailPlaceholder: 'mail@kaztravel.kz',
     lastNamePlaceholder: 'Иванов',
@@ -255,6 +265,11 @@ export const locStrings = {
     nominationsSup: 'KAZAKH TOURISM',
     nominationsHead: 'Номинациялар',
     nominationsLead: 'Байқаудың географиясы - Қазақстан Республикасы',
+
+    // Nomination Form
+    nominationFormNomination: 'НОМИНАЦИЯ',
+    nominationFormOwner: 'Иесі',
+    nominationFormVotes: 'Дауыстар саны',
 
     // Placeholders
     emailPlaceholder: 'mail@kaztravel.kz',
