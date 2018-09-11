@@ -26,7 +26,9 @@ const defaultState = {
 
   smsCode: '',
 
-  errors: []
+  errors: [],
+
+  emailConfirmed: true
 }
 
 const emailValidationRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -62,6 +64,9 @@ class FormContainer extends Component {
           })
         }
       })
+    } else {
+      toastr.warning('Для заполнения анкеты необходимо зарегистрироваться')
+      this.props.history.push('/signup')
     }
   }
 

@@ -48,6 +48,7 @@ class App extends Component {
           <Public exact path="/nomination/:_id" component={ NominationContainer } {...this.props} />
           <Public exact path="/signup" component={ SignupContainer } {...this.props} />
           <Public exact path="/login" component={ LoginContainer } {...this.props} />
+          <Public exact path="/form" component={ FormContainer } {...this.props} />
           <Redirect to="/" />
         </Switch>
         <Public path="/" component={ FooterContainer } {...this.props} />

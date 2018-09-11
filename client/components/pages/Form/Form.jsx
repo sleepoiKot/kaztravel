@@ -29,7 +29,8 @@ const form = ({context, submitForm}) => {
               <div className="elements-section" id="variant-1-2">
                 <div className="elements-example">
                   <div className="elements-example-body">
-                    {isSmsVerified ?
+                    {context.state.emailConfirmed ?
+                    isSmsVerified ?
                       <form
                         onSubmit={(e) => submitForm(e)}
                         className="c-form">
@@ -324,6 +325,20 @@ const form = ({context, submitForm}) => {
                           </div>
                         </div>
                       </form>
+                      :
+                      <div className="row">
+                        <div className="col-lg-9">
+                          <div className="elements-section" id="variant-1">
+                            <div className="elements-section" id="variant-1-2">
+                              <div className="elements-example">
+                                <div className="elements-example-body">
+                                  Ссылка на подтверждение
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     }
                   </div>
                 </div>

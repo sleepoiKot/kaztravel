@@ -9,7 +9,9 @@ const defaultState = {
   registrationPasswordConfirm: '',
 
   passwordValidation: true,
-  errors: []
+  errors: [],
+
+  emailSentInfo: false
 }
 
 const emailValidationRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -74,7 +76,7 @@ class SignupContainer extends Component {
       if(err){
         toastr.error(err.reason, 'Регистрация не прошла')
       } else {
-        this.props.history.push('/login')
+        this.setState({emailSentInfo: true})
       }
     })
   }

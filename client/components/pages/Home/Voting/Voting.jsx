@@ -5,7 +5,7 @@ const voting = ({context}) => (
     <div className="c-container">
       {/* Heading */}
       <h6 className="u-text-sup u-text-center">КОНКУРСНЫЙ ОТБОР</h6>
-      <p className="u-text-lead u-text-center">Заявки соискателей на участие принимаются в период <br /> с 20 сентября 2018 года по 31 октября 2018 года</p>
+      <p className="u-text-lead u-text-center">Заявки соискателей на участие принимаются в период <br /> с 20 сентября 2018 года по 20 октября 2018 года</p>
       {/* Heading End */}
       <h2 className="u-text-title u-text-center">до начала конкурсного отбора осталось:</h2>
       {/* Space */}
@@ -34,18 +34,14 @@ const voting = ({context}) => (
       </div>
       {/* Countdown End */}
     </div>
-    {context.props.authenticated ?
-      <div className="col-md-12 mt-5">
-        <div className="text-center">
-          <button
-            type="button"
-            className="btn btn-outline-default waves-effect fill-form-button"
-            onClick={() => context.props.history.push('/form')}><h4>Заполнить анкету на участие</h4></button>
-        </div>
+    <div className="col-md-12 mt-5">
+      <div className="text-center">
+        <button
+          type="button"
+          className="btn btn-outline-default waves-effect fill-form-button"
+          onClick={() => context.props.history.push('/form')}><h4>Заполнить анкету на участие</h4></button>
       </div>
-      :
-      null
-    }
+    </div>
   </div>
 );
 
